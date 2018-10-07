@@ -54,7 +54,25 @@ namespace RetrievalSystem
                 MessageBox.Show("Please Set the path of index first!");
                 return;
             }
+
+
             // Do the index here.
+            IndexGenerator gernerator = new IndexGenerator();
+
+            if (!gernerator.IsDirectoryEmpty(txt_IndexPath.Text))
+            {
+                if (MessageBox.Show("The directory is not empty, do you want to delete all the files inside? (Yes-Delete All, No-Select Again)",
+                        "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    gernerator.DeleteFiles(txt_IndexPath.Text);
+                    gernerator.StartIndex(txt_IndexPath.Text, txt_CollectionPath.Text);
+                }
+            }
+            else
+            {
+                gernerator.StartIndex(txt_IndexPath.Text, txt_CollectionPath.Text);
+            }
+            
         }
     }
 }
