@@ -39,7 +39,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_IndexingTimeName = new System.Windows.Forms.Label();
             this.lbl_IndexingTime = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblSearch = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txt_InformationNeeds = new System.Windows.Forms.TextBox();
+            this.lbl_Result = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbl_CollectionPath
@@ -96,6 +103,8 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Menu;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.lbl_IndexingTime);
             this.panel1.Controls.Add(this.btn_GenerateIndex);
             this.panel1.Controls.Add(this.lbl_IndexingTimeName);
@@ -106,6 +115,7 @@
             this.panel1.Controls.Add(this.txt_IndexPath);
             this.panel1.Controls.Add(this.lbl_CollectionPath);
             this.panel1.Controls.Add(this.txt_CollectionPath);
+            this.panel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel1.Location = new System.Drawing.Point(12, 6);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(696, 96);
@@ -149,16 +159,79 @@
             this.lbl_IndexingTime.TabIndex = 9;
             this.lbl_IndexingTime.Text = "0 ms";
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Menu;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.lbl_Result);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.lblSearch);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.txt_InformationNeeds);
+            this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.panel2.Location = new System.Drawing.Point(12, 106);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(696, 90);
+            this.panel2.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(2, -1);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 15);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Searching";
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.Location = new System.Drawing.Point(615, 15);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(75, 23);
+            this.lblSearch.TabIndex = 2;
+            this.lblSearch.Text = "Search";
+            this.lblSearch.UseVisualStyleBackColor = true;
+            this.lblSearch.Click += new System.EventHandler(this.lblSearch_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(93, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Information Needs";
+            // 
+            // txt_InformationNeeds
+            // 
+            this.txt_InformationNeeds.Location = new System.Drawing.Point(102, 18);
+            this.txt_InformationNeeds.Name = "txt_InformationNeeds";
+            this.txt_InformationNeeds.Size = new System.Drawing.Size(507, 20);
+            this.txt_InformationNeeds.TabIndex = 1;
+            // 
+            // lbl_Result
+            // 
+            this.lbl_Result.AutoSize = true;
+            this.lbl_Result.Location = new System.Drawing.Point(3, 45);
+            this.lbl_Result.Name = "lbl_Result";
+            this.lbl_Result.Size = new System.Drawing.Size(37, 13);
+            this.lbl_Result.TabIndex = 8;
+            this.lbl_Result.Text = "Result";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(720, 262);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Kingsland University Retrieval System";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -175,6 +248,12 @@
         private System.Windows.Forms.Button btn_GenerateIndex;
         private System.Windows.Forms.Label lbl_IndexingTime;
         private System.Windows.Forms.Label lbl_IndexingTimeName;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button lblSearch;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txt_InformationNeeds;
+        private System.Windows.Forms.Label lbl_Result;
     }
 }
 

@@ -15,16 +15,19 @@ namespace RetrievalSystem
     {
 
         Lucene.Net.Store.Directory indexDirectory;
-        Analyzer analyzer;
-        IndexWriter writer;
+        public Lucene.Net.Analysis.Analyzer analyzer { get; set; }
+        public Lucene.Net.Index.IndexWriter writer { get; set; }
+        public List<Collection> collectionList{ get; set; }
+
         public static Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
 
         // Constructer
         public IndexGenerator()
         {
             indexDirectory = null;
-            analyzer = new Lucene.Net.Analysis.SimpleAnalyzer();
+            analyzer = new Lucene.Net.Analysis.Standard.StandardAnalyzer(VERSION);
             writer = null;
+            collectionList = null;
         }
 
         public Boolean IsDirectoryEmpty(string indexPath)
@@ -74,18 +77,20 @@ namespace RetrievalSystem
             {
                 Lucene.Net.Documents.Document doc = new Lucene.Net.Documents.Document();
                 // TODO: Enter code to index text
-                doc.Add(new Lucene.Net.Documents.Field("DocID", c.DocID, Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS));
-                doc.Add(new Lucene.Net.Documents.Field("Title", c.Title, Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS));
-                doc.Add(new Lucene.Net.Documents.Field("Author", c.Author, Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS));
-                doc.Add(new Lucene.Net.Documents.Field("Bibliographic", c.Bibliographic, Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS));
-                doc.Add(new Lucene.Net.Documents.Field("Words", c.Words, Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS));
+                Lucene.Net.Documents.Field field_DocID = new Lucene.Net.Documents.Field("DocID", c.DocID, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS);
+                doc.Add(field_DocID);
+                Lucene.Net.Documents.Field field_Title = new Lucene.Net.Documents.Field("Title", c.Title, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS);
+                doc.Add(field_Title);
+                doc.Add(new Lucene.Net.Documents.Field("Author", c.Author, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS));
+                doc.Add(new Lucene.Net.Documents.Field("Bibliographic", c.Bibliographic, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS));
+                doc.Add(new Lucene.Net.Documents.Field("Words", c.Words, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS));
                 writer.AddDocument(doc);
             }
         }
 
-        public List<Collection> Analyser(string collectionPath) {
+        public void Analyser(string collectionPath) {
 
-            List<Collection> collctions = new List<Collection>();
+            List<Collection> collections = new List<Collection>();
             // Read the files from the collection directory
             System.IO.DirectoryInfo di = new DirectoryInfo(collectionPath);
             foreach (FileInfo file in di.GetFiles())
@@ -100,7 +105,7 @@ namespace RetrievalSystem
                 text = result[0];
 
                 // Get Bibliographic
-                stringSeparators = new string[] { "\n.B\n" };
+                stringSeparators = new string[] { "\n.B\n", "\n.B" };
                 result = text.Split(stringSeparators, StringSplitOptions.None);
                 collection.Bibliographic = result.Length != 1 ? result[1] : string.Empty;
                 text = result[0];
@@ -123,12 +128,15 @@ namespace RetrievalSystem
                 collection.DocID = result.Length != 1 ? result[1] : string.Empty;
                 text = result[0];
 
+                if (collection.DocID.Contains("470"))
+                {
+
+                }
                 // Remove duplicated title in the abstract
                 collection.Words = collection.Words.Replace(collection.Title + "\n", string.Empty);
-                collctions.Add(collection);
+                collections.Add(collection);
             }
-
-            return collctions;
+            collectionList = collections;
         }
         // Main Process
         public void StartIndex(string indexPath, string collectionPath)
@@ -137,10 +145,10 @@ namespace RetrievalSystem
             SettingConfiguration(indexPath);
 
             // Read File and Analyse
-            List<Collection> collections = Analyser(collectionPath);
+            Analyser(collectionPath);
 
             // Create Index
-            IndexText(collections);
+            IndexText(collectionList);
 
             //Clean
             CleanUp();

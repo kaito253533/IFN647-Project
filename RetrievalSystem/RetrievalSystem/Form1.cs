@@ -13,11 +13,14 @@ namespace RetrievalSystem
 {
     public partial class Form1 : Form
     {
+        IndexGenerator generator = new IndexGenerator();
         public Form1()
         {
             InitializeComponent();
         }
 
+
+        # region Step 1: Indexing
         private void btn_CollectionPath_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -58,8 +61,6 @@ namespace RetrievalSystem
 
 
             // Do the index here.
-            IndexGenerator generator = new IndexGenerator();
-            
         
             if (!generator.IsDirectoryEmpty(txt_IndexPath.Text))
             {
@@ -87,5 +88,27 @@ namespace RetrievalSystem
             long ts = stopWatch.ElapsedMilliseconds;
             lbl_IndexingTime.Text = ts.ToString() + " ms";
         }
+
+        #endregion
+
+        #region Step 2: Searching
+        private void lblSearch_Click(object sender, EventArgs e)
+        {
+            Searcher searcher = new Searcher(txt_IndexPath.Text, generator.analyzer, generator.writer);
+            searcher.CreateSearcher();
+            searcher.CreateParser();
+            
+            List<int> resultList = searcher.DisplayResults(searcher.SearchIndex(txt_InformationNeeds.Text));
+            List<int> DocIDList = generator.collectionList.Select(n => Convert.ToInt32(n.DocID)).ToList();
+            List<string> FinalResult = new List<string>();
+            foreach (int i in resultList)
+            {
+                FinalResult.Add(DocIDList.ToArray()[i].ToString());
+            }
+
+            lbl_Result.Text = "Top 10 Relevant Collection: " + String.Join(",", FinalResult);
+        }
+
+        #endregion
     }
 }
