@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -57,22 +58,34 @@ namespace RetrievalSystem
 
 
             // Do the index here.
-            IndexGenerator gernerator = new IndexGenerator();
-
-            if (!gernerator.IsDirectoryEmpty(txt_IndexPath.Text))
+            IndexGenerator generator = new IndexGenerator();
+            
+        
+            if (!generator.IsDirectoryEmpty(txt_IndexPath.Text))
             {
                 if (MessageBox.Show("The directory is not empty, do you want to delete all the files inside? (Yes-Delete All, No-Select Again)",
                         "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    gernerator.DeleteFiles(txt_IndexPath.Text);
-                    gernerator.StartIndex(txt_IndexPath.Text, txt_CollectionPath.Text);
+                    generator.DeleteFiles(txt_IndexPath.Text);
+                    Indexing(generator);
                 }
             }
             else
             {
-                gernerator.StartIndex(txt_IndexPath.Text, txt_CollectionPath.Text);
+                Indexing(generator);
             }
+
             
+        }
+
+        private void Indexing( IndexGenerator generator)
+        {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            generator.StartIndex(txt_IndexPath.Text, txt_CollectionPath.Text);
+            stopWatch.Stop();
+            long ts = stopWatch.ElapsedMilliseconds;
+            lbl_IndexingTime.Text = ts.ToString() + " ms";
         }
     }
 }

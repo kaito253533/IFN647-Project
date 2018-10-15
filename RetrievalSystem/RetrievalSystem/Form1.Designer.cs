@@ -35,8 +35,10 @@
             this.txt_IndexPath = new System.Windows.Forms.TextBox();
             this.btn_IndexPath = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.btn_GenerateIndex = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_IndexingTimeName = new System.Windows.Forms.Label();
+            this.lbl_IndexingTime = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,7 +96,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lbl_IndexingTime);
             this.panel1.Controls.Add(this.btn_GenerateIndex);
+            this.panel1.Controls.Add(this.lbl_IndexingTimeName);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btn_CollectionPath);
             this.panel1.Controls.Add(this.btn_IndexPath);
@@ -107,6 +111,16 @@
             this.panel1.Size = new System.Drawing.Size(696, 96);
             this.panel1.TabIndex = 6;
             // 
+            // btn_GenerateIndex
+            // 
+            this.btn_GenerateIndex.Location = new System.Drawing.Point(615, 69);
+            this.btn_GenerateIndex.Name = "btn_GenerateIndex";
+            this.btn_GenerateIndex.Size = new System.Drawing.Size(75, 23);
+            this.btn_GenerateIndex.TabIndex = 8;
+            this.btn_GenerateIndex.Text = "Index";
+            this.btn_GenerateIndex.UseVisualStyleBackColor = true;
+            this.btn_GenerateIndex.Click += new System.EventHandler(this.btn_GenerateIndex_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -117,15 +131,23 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Indexing";
             // 
-            // btn_GenerateIndex
+            // lbl_IndexingTimeName
             // 
-            this.btn_GenerateIndex.Location = new System.Drawing.Point(615, 69);
-            this.btn_GenerateIndex.Name = "btn_GenerateIndex";
-            this.btn_GenerateIndex.Size = new System.Drawing.Size(75, 23);
-            this.btn_GenerateIndex.TabIndex = 8;
-            this.btn_GenerateIndex.Text = "Index";
-            this.btn_GenerateIndex.UseVisualStyleBackColor = true;
-            this.btn_GenerateIndex.Click += new System.EventHandler(this.btn_GenerateIndex_Click);
+            this.lbl_IndexingTimeName.AutoSize = true;
+            this.lbl_IndexingTimeName.Location = new System.Drawing.Point(420, 79);
+            this.lbl_IndexingTimeName.Name = "lbl_IndexingTimeName";
+            this.lbl_IndexingTimeName.Size = new System.Drawing.Size(74, 13);
+            this.lbl_IndexingTimeName.TabIndex = 7;
+            this.lbl_IndexingTimeName.Text = "Process Time:";
+            // 
+            // lbl_IndexingTime
+            // 
+            this.lbl_IndexingTime.AutoSize = true;
+            this.lbl_IndexingTime.Location = new System.Drawing.Point(500, 79);
+            this.lbl_IndexingTime.Name = "lbl_IndexingTime";
+            this.lbl_IndexingTime.Size = new System.Drawing.Size(29, 13);
+            this.lbl_IndexingTime.TabIndex = 9;
+            this.lbl_IndexingTime.Text = "0 ms";
             // 
             // Form1
             // 
@@ -151,6 +173,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_GenerateIndex;
+        private System.Windows.Forms.Label lbl_IndexingTime;
+        private System.Windows.Forms.Label lbl_IndexingTimeName;
     }
 }
 

@@ -38,7 +38,7 @@ namespace RetrievalSystem
                 {
                     return false;
                 }
-                return false;
+                return true;
             }
             return true;
         }
