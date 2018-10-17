@@ -128,10 +128,6 @@ namespace RetrievalSystem
                 collection.DocID = result.Length != 1 ? result[1] : string.Empty;
                 text = result[0];
 
-                if (collection.DocID.Contains("470"))
-                {
-
-                }
                 // Remove duplicated title in the abstract
                 collection.Words = collection.Words.Replace(collection.Title + "\n", string.Empty);
                 collections.Add(collection);

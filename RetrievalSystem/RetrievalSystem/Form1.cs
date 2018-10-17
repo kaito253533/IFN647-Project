@@ -94,22 +94,24 @@ namespace RetrievalSystem
         #region Step 2: Searching
         private void lblSearch_Click(object sender, EventArgs e)
         {
-            lv_Result.Clear();
+            
             Searcher searcher = new Searcher(txt_IndexPath.Text, generator.analyzer, generator.writer);
             searcher.CreateSearcher();
             searcher.CreateParser();
             
             List<string> resultList = searcher.DisplayResults(searcher.SearchIndex(txt_InformationNeeds.Text), generator.collectionList);
             List<Collection> ResultCollectionList = generator.collectionList.Where(n => resultList.Contains(n.DocID)).ToList();
-            
+
+            // Set columns to listview
+            lv_Result.Clear();
             lv_Result.View = View.Details;
-            
             lv_Result.Columns.Add("DocID", -2, HorizontalAlignment.Left);
             lv_Result.Columns.Add("Title", -2, HorizontalAlignment.Left);
             lv_Result.Columns.Add("Author", -2, HorizontalAlignment.Left);
             lv_Result.Columns.Add("Bibliographic", -2, HorizontalAlignment.Left);
             lv_Result.Columns.Add("Abtract", -2, HorizontalAlignment.Left);
 
+            // Add items to listview
             foreach (Collection c in ResultCollectionList)
             {
                 string abtractFirstSentence = c.Words.Split('.')[0];
