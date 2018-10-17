@@ -51,12 +51,13 @@ namespace RetrievalSystem
             return doc;
         }
 
-        public List<int> DisplayResults(Lucene.Net.Search.TopDocs docs)
+        public List<string> DisplayResults(Lucene.Net.Search.TopDocs docs, List<Collection> collections)
         {
-            List<int> resultList = new List<int>();
+            List<string> resultList = new List<string>();
+            string[] collection_DocIds = collections.Select(n => n.DocID).ToArray();
             foreach (Lucene.Net.Search.ScoreDoc doc in docs.ScoreDocs)
             {
-               resultList.Add((doc.Doc));
+               resultList.Add(collection_DocIds[doc.Doc]);
             }
             return resultList;
         }

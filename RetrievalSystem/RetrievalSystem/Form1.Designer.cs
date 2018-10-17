@@ -35,16 +35,17 @@
             this.txt_IndexPath = new System.Windows.Forms.TextBox();
             this.btn_IndexPath = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_GenerateIndex = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbl_IndexingTimeName = new System.Windows.Forms.Label();
             this.lbl_IndexingTime = new System.Windows.Forms.Label();
+            this.btn_GenerateIndex = new System.Windows.Forms.Button();
+            this.lbl_IndexingTimeName = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lbl_Result = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblSearch = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_InformationNeeds = new System.Windows.Forms.TextBox();
-            this.lbl_Result = new System.Windows.Forms.Label();
+            this.lv_Result = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -121,6 +122,15 @@
             this.panel1.Size = new System.Drawing.Size(696, 96);
             this.panel1.TabIndex = 6;
             // 
+            // lbl_IndexingTime
+            // 
+            this.lbl_IndexingTime.AutoSize = true;
+            this.lbl_IndexingTime.Location = new System.Drawing.Point(500, 79);
+            this.lbl_IndexingTime.Name = "lbl_IndexingTime";
+            this.lbl_IndexingTime.Size = new System.Drawing.Size(29, 13);
+            this.lbl_IndexingTime.TabIndex = 9;
+            this.lbl_IndexingTime.Text = "0 ms";
+            // 
             // btn_GenerateIndex
             // 
             this.btn_GenerateIndex.Location = new System.Drawing.Point(615, 69);
@@ -130,6 +140,15 @@
             this.btn_GenerateIndex.Text = "Index";
             this.btn_GenerateIndex.UseVisualStyleBackColor = true;
             this.btn_GenerateIndex.Click += new System.EventHandler(this.btn_GenerateIndex_Click);
+            // 
+            // lbl_IndexingTimeName
+            // 
+            this.lbl_IndexingTimeName.AutoSize = true;
+            this.lbl_IndexingTimeName.Location = new System.Drawing.Point(420, 79);
+            this.lbl_IndexingTimeName.Name = "lbl_IndexingTimeName";
+            this.lbl_IndexingTimeName.Size = new System.Drawing.Size(74, 13);
+            this.lbl_IndexingTimeName.TabIndex = 7;
+            this.lbl_IndexingTimeName.Text = "Process Time:";
             // 
             // label1
             // 
@@ -141,28 +160,11 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Indexing";
             // 
-            // lbl_IndexingTimeName
-            // 
-            this.lbl_IndexingTimeName.AutoSize = true;
-            this.lbl_IndexingTimeName.Location = new System.Drawing.Point(420, 79);
-            this.lbl_IndexingTimeName.Name = "lbl_IndexingTimeName";
-            this.lbl_IndexingTimeName.Size = new System.Drawing.Size(74, 13);
-            this.lbl_IndexingTimeName.TabIndex = 7;
-            this.lbl_IndexingTimeName.Text = "Process Time:";
-            // 
-            // lbl_IndexingTime
-            // 
-            this.lbl_IndexingTime.AutoSize = true;
-            this.lbl_IndexingTime.Location = new System.Drawing.Point(500, 79);
-            this.lbl_IndexingTime.Name = "lbl_IndexingTime";
-            this.lbl_IndexingTime.Size = new System.Drawing.Size(29, 13);
-            this.lbl_IndexingTime.TabIndex = 9;
-            this.lbl_IndexingTime.Text = "0 ms";
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Menu;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.lv_Result);
             this.panel2.Controls.Add(this.lbl_Result);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.lblSearch);
@@ -171,8 +173,17 @@
             this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel2.Location = new System.Drawing.Point(12, 106);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(696, 90);
+            this.panel2.Size = new System.Drawing.Size(696, 290);
             this.panel2.TabIndex = 7;
+            // 
+            // lbl_Result
+            // 
+            this.lbl_Result.AutoSize = true;
+            this.lbl_Result.Location = new System.Drawing.Point(3, 45);
+            this.lbl_Result.Name = "lbl_Result";
+            this.lbl_Result.Size = new System.Drawing.Size(37, 13);
+            this.lbl_Result.TabIndex = 8;
+            this.lbl_Result.Text = "Result";
             // 
             // label4
             // 
@@ -210,20 +221,19 @@
             this.txt_InformationNeeds.Size = new System.Drawing.Size(507, 20);
             this.txt_InformationNeeds.TabIndex = 1;
             // 
-            // lbl_Result
+            // lv_Result
             // 
-            this.lbl_Result.AutoSize = true;
-            this.lbl_Result.Location = new System.Drawing.Point(3, 45);
-            this.lbl_Result.Name = "lbl_Result";
-            this.lbl_Result.Size = new System.Drawing.Size(37, 13);
-            this.lbl_Result.TabIndex = 8;
-            this.lbl_Result.Text = "Result";
+            this.lv_Result.Location = new System.Drawing.Point(6, 62);
+            this.lv_Result.Name = "lv_Result";
+            this.lv_Result.Size = new System.Drawing.Size(670, 210);
+            this.lv_Result.TabIndex = 9;
+            this.lv_Result.UseCompatibleStateImageBehavior = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 262);
+            this.ClientSize = new System.Drawing.Size(720, 560);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
@@ -254,6 +264,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_InformationNeeds;
         private System.Windows.Forms.Label lbl_Result;
+        private System.Windows.Forms.ListView lv_Result;
     }
 }
 

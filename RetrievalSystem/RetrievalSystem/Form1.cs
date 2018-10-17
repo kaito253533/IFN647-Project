@@ -94,19 +94,29 @@ namespace RetrievalSystem
         #region Step 2: Searching
         private void lblSearch_Click(object sender, EventArgs e)
         {
+            lv_Result.Clear();
             Searcher searcher = new Searcher(txt_IndexPath.Text, generator.analyzer, generator.writer);
             searcher.CreateSearcher();
             searcher.CreateParser();
             
-            List<int> resultList = searcher.DisplayResults(searcher.SearchIndex(txt_InformationNeeds.Text));
-            List<int> DocIDList = generator.collectionList.Select(n => Convert.ToInt32(n.DocID)).ToList();
-            List<string> FinalResult = new List<string>();
-            foreach (int i in resultList)
-            {
-                FinalResult.Add(DocIDList.ToArray()[i].ToString());
-            }
+            List<string> resultList = searcher.DisplayResults(searcher.SearchIndex(txt_InformationNeeds.Text), generator.collectionList);
+            List<Collection> ResultCollectionList = generator.collectionList.Where(n => resultList.Contains(n.DocID)).ToList();
+            
+            lv_Result.View = View.Details;
+            
+            lv_Result.Columns.Add("DocID", -2, HorizontalAlignment.Left);
+            lv_Result.Columns.Add("Title", -2, HorizontalAlignment.Left);
+            lv_Result.Columns.Add("Author", -2, HorizontalAlignment.Left);
+            lv_Result.Columns.Add("Bibliographic", -2, HorizontalAlignment.Left);
+            lv_Result.Columns.Add("Abtract", -2, HorizontalAlignment.Left);
 
-            lbl_Result.Text = "Top 10 Relevant Collection: " + String.Join(",", FinalResult);
+            foreach (Collection c in ResultCollectionList)
+            {
+                string abtractFirstSentence = c.Words.Split('.')[0];
+                string[] row = { c.DocID, c.Title, c.Author, c.Bibliographic, string.IsNullOrEmpty(abtractFirstSentence) ? string.Empty : abtractFirstSentence.TrimEnd() + "."};
+                var listViewItem = new ListViewItem(row);
+                lv_Result.Items.Add(listViewItem);
+            }
         }
 
         #endregion
