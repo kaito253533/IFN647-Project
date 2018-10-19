@@ -48,6 +48,9 @@
             this.txt_InformationNeeds = new System.Windows.Forms.TextBox();
             this.lbl_SearchingTime = new System.Windows.Forms.Label();
             this.lbl_ProcessTimeForSearch = new System.Windows.Forms.Label();
+            this.ddl_Type = new System.Windows.Forms.ComboBox();
+            this.lbl_SearchType = new System.Windows.Forms.Label();
+            this.ddl_Fields = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -166,6 +169,9 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Menu;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.ddl_Fields);
+            this.panel2.Controls.Add(this.lbl_SearchType);
+            this.panel2.Controls.Add(this.ddl_Type);
             this.panel2.Controls.Add(this.lbl_SearchingTime);
             this.panel2.Controls.Add(this.lbl_ProcessTimeForSearch);
             this.panel2.Controls.Add(this.lv_Result);
@@ -177,12 +183,12 @@
             this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel2.Location = new System.Drawing.Point(12, 106);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(696, 290);
+            this.panel2.Size = new System.Drawing.Size(696, 314);
             this.panel2.TabIndex = 7;
             // 
             // lv_Result
             // 
-            this.lv_Result.Location = new System.Drawing.Point(6, 62);
+            this.lv_Result.Location = new System.Drawing.Point(11, 91);
             this.lv_Result.Name = "lv_Result";
             this.lv_Result.Size = new System.Drawing.Size(670, 210);
             this.lv_Result.TabIndex = 9;
@@ -191,7 +197,7 @@
             // lbl_Result
             // 
             this.lbl_Result.AutoSize = true;
-            this.lbl_Result.Location = new System.Drawing.Point(3, 45);
+            this.lbl_Result.Location = new System.Drawing.Point(8, 75);
             this.lbl_Result.Name = "lbl_Result";
             this.lbl_Result.Size = new System.Drawing.Size(37, 13);
             this.lbl_Result.TabIndex = 8;
@@ -209,7 +215,7 @@
             // 
             // lblSearch
             // 
-            this.lblSearch.Location = new System.Drawing.Point(615, 15);
+            this.lblSearch.Location = new System.Drawing.Point(615, 65);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(75, 23);
             this.lblSearch.TabIndex = 2;
@@ -236,7 +242,7 @@
             // lbl_SearchingTime
             // 
             this.lbl_SearchingTime.AutoSize = true;
-            this.lbl_SearchingTime.Location = new System.Drawing.Point(500, 45);
+            this.lbl_SearchingTime.Location = new System.Drawing.Point(500, 70);
             this.lbl_SearchingTime.Name = "lbl_SearchingTime";
             this.lbl_SearchingTime.Size = new System.Drawing.Size(29, 13);
             this.lbl_SearchingTime.TabIndex = 11;
@@ -245,11 +251,47 @@
             // lbl_ProcessTimeForSearch
             // 
             this.lbl_ProcessTimeForSearch.AutoSize = true;
-            this.lbl_ProcessTimeForSearch.Location = new System.Drawing.Point(420, 45);
+            this.lbl_ProcessTimeForSearch.Location = new System.Drawing.Point(420, 70);
             this.lbl_ProcessTimeForSearch.Name = "lbl_ProcessTimeForSearch";
             this.lbl_ProcessTimeForSearch.Size = new System.Drawing.Size(74, 13);
             this.lbl_ProcessTimeForSearch.TabIndex = 10;
             this.lbl_ProcessTimeForSearch.Text = "Process Time:";
+            // 
+            // ddl_Type
+            // 
+            this.ddl_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddl_Type.FormattingEnabled = true;
+            this.ddl_Type.Items.AddRange(new object[] {
+            "Single Term",
+            "Muti-Term"});
+            this.ddl_Type.Location = new System.Drawing.Point(102, 44);
+            this.ddl_Type.Name = "ddl_Type";
+            this.ddl_Type.Size = new System.Drawing.Size(121, 21);
+            this.ddl_Type.TabIndex = 12;
+            this.ddl_Type.SelectedIndexChanged += new System.EventHandler(this.Type_Click);
+            // 
+            // lbl_SearchType
+            // 
+            this.lbl_SearchType.AutoSize = true;
+            this.lbl_SearchType.Location = new System.Drawing.Point(3, 50);
+            this.lbl_SearchType.Name = "lbl_SearchType";
+            this.lbl_SearchType.Size = new System.Drawing.Size(82, 13);
+            this.lbl_SearchType.TabIndex = 13;
+            this.lbl_SearchType.Text = "Searching Type";
+            // 
+            // ddl_Fields
+            // 
+            this.ddl_Fields.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddl_Fields.FormattingEnabled = true;
+            this.ddl_Fields.Items.AddRange(new object[] {
+            "Title",
+            "Author",
+            "Bibliographic",
+            "Words"});
+            this.ddl_Fields.Location = new System.Drawing.Point(229, 44);
+            this.ddl_Fields.Name = "ddl_Fields";
+            this.ddl_Fields.Size = new System.Drawing.Size(121, 21);
+            this.ddl_Fields.TabIndex = 14;
             // 
             // Form1
             // 
@@ -289,6 +331,9 @@
         private System.Windows.Forms.ListView lv_Result;
         private System.Windows.Forms.Label lbl_SearchingTime;
         private System.Windows.Forms.Label lbl_ProcessTimeForSearch;
+        private System.Windows.Forms.Label lbl_SearchType;
+        private System.Windows.Forms.ComboBox ddl_Type;
+        private System.Windows.Forms.ComboBox ddl_Fields;
     }
 }
 

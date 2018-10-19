@@ -34,11 +34,25 @@ namespace RetrievalSystem
             searcher = new Lucene.Net.Search.IndexSearcher(this.indexDirectory);
         }
 
-        public void CreateParser()
+        public void CreateParser(String type, String field)
         {
             //parser = new Lucene.Net.QueryParsers.QueryParser(VERSION, TEXT_FN, analyzer);
-            string[] fields = new[] { "DocID", "Title", "Author", "Bibliographic", "Words" };
-            parser = new Lucene.Net.QueryParsers.MultiFieldQueryParser(VERSION, fields, analyzer);
+            
+
+            switch (type)
+            {
+                case "Single Term":
+                    parser = new Lucene.Net.QueryParsers.QueryParser(VERSION, field, analyzer);
+                    break;
+                case "Muti-Term":
+                    string[] fields = new[] { "DocID", "Title", "Author", "Bibliographic", "Words" };
+                    parser = new Lucene.Net.QueryParsers.MultiFieldQueryParser(VERSION, fields, analyzer);
+                    break;
+                /*case "Muti - Phrase":
+                    parser = new Lucene.Net.QueryParsers.mu(VERSION, fields, analyzer);
+                    break;*/
+            }
+            
             //parser = new Lucene.Net.QueryParsers.QueryParser(VERSION, TEXT_FN, analyzer);
         }
 

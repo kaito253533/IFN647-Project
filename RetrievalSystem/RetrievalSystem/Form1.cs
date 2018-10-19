@@ -17,6 +17,8 @@ namespace RetrievalSystem
         public Form1()
         {
             InitializeComponent();
+            ddl_Type.SelectedIndex = 0;
+            ddl_Fields.SelectedIndex = 0;
         }
 
 
@@ -91,14 +93,26 @@ namespace RetrievalSystem
         #endregion
 
         #region Step 2: Searching
-        private void lblSearch_Click(object sender, EventArgs e)
+        private void Type_Click(object sender, EventArgs e)
         {
+            if (ddl_Type.SelectedItem != "Single Term")
+            {
+                ddl_Fields.Visible = false;
+            }
+            else {
+                ddl_Fields.Visible = true;
+            }
+
+        }
+            private void lblSearch_Click(object sender, EventArgs e)
+        {
+            
             // Calculate the Process Time
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             Searcher searcher = new Searcher(txt_IndexPath.Text, generator.analyzer, generator.writer);
             searcher.CreateSearcher();
-            searcher.CreateParser();
+            searcher.CreateParser(ddl_Type.SelectedItem.ToString(), ddl_Fields.SelectedItem.ToString());
 
             // Searching and generate result
             List<string> resultList = searcher.DisplayResults(searcher.SearchIndex(txt_InformationNeeds.Text), generator.collectionList);
