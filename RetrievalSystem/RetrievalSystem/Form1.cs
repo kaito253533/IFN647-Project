@@ -157,6 +157,7 @@ namespace RetrievalSystem
 
         private void btn_Previous_Click(object sender, EventArgs e)
         {
+            // if skip >= 10, means the user is not in the first page! because it still can minus 10;
             if (skip >= 10)
             {
                 skip = skip - 10;
@@ -170,6 +171,7 @@ namespace RetrievalSystem
 
         private void btn_Next_Click(object sender, EventArgs e)
         {
+            // if skip + 10 > total number of docs, means the user is in the last page!
             if (skip + 10 > total)
             {
                 MessageBox.Show("You are in the last page!");
