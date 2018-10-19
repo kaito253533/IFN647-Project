@@ -54,8 +54,17 @@
             this.btn_Previous = new System.Windows.Forms.Button();
             this.btn_Next = new System.Windows.Forms.Button();
             this.lblTotalDocs = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lbl_Saving = new System.Windows.Forms.Label();
+            this.btn_SaveBrowse = new System.Windows.Forms.Button();
+            this.lbl_ExportPath = new System.Windows.Forms.Label();
+            this.txt_Saving = new System.Windows.Forms.TextBox();
+            this.lbl_Warning = new System.Windows.Forms.Label();
+            this.lbl_FileName = new System.Windows.Forms.Label();
+            this.txt_FileName = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbl_CollectionPath
@@ -187,9 +196,9 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.txt_InformationNeeds);
             this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel2.Location = new System.Drawing.Point(12, 106);
+            this.panel2.Location = new System.Drawing.Point(12, 210);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(696, 357);
+            this.panel2.Size = new System.Drawing.Size(696, 359);
             this.panel2.TabIndex = 7;
             // 
             // lv_Result
@@ -328,11 +337,91 @@
             this.lblTotalDocs.TabIndex = 17;
             this.lblTotalDocs.Text = "0 docs";
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Menu;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.txt_FileName);
+            this.panel3.Controls.Add(this.lbl_FileName);
+            this.panel3.Controls.Add(this.lbl_Warning);
+            this.panel3.Controls.Add(this.lbl_Saving);
+            this.panel3.Controls.Add(this.btn_SaveBrowse);
+            this.panel3.Controls.Add(this.lbl_ExportPath);
+            this.panel3.Controls.Add(this.txt_Saving);
+            this.panel3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.panel3.Location = new System.Drawing.Point(12, 109);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(696, 95);
+            this.panel3.TabIndex = 8;
+            // 
+            // lbl_Saving
+            // 
+            this.lbl_Saving.AutoSize = true;
+            this.lbl_Saving.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Saving.Location = new System.Drawing.Point(2, -1);
+            this.lbl_Saving.Name = "lbl_Saving";
+            this.lbl_Saving.Size = new System.Drawing.Size(44, 15);
+            this.lbl_Saving.TabIndex = 7;
+            this.lbl_Saving.Text = "Saving";
+            // 
+            // btn_SaveBrowse
+            // 
+            this.btn_SaveBrowse.Location = new System.Drawing.Point(338, 16);
+            this.btn_SaveBrowse.Name = "btn_SaveBrowse";
+            this.btn_SaveBrowse.Size = new System.Drawing.Size(75, 23);
+            this.btn_SaveBrowse.TabIndex = 2;
+            this.btn_SaveBrowse.Text = "Browse";
+            this.btn_SaveBrowse.UseVisualStyleBackColor = true;
+            this.btn_SaveBrowse.Click += new System.EventHandler(this.btn_SaveBrowse_Click);
+            // 
+            // lbl_ExportPath
+            // 
+            this.lbl_ExportPath.AutoSize = true;
+            this.lbl_ExportPath.Location = new System.Drawing.Point(3, 22);
+            this.lbl_ExportPath.Name = "lbl_ExportPath";
+            this.lbl_ExportPath.Size = new System.Drawing.Size(68, 13);
+            this.lbl_ExportPath.TabIndex = 0;
+            this.lbl_ExportPath.Text = "Saving Path:";
+            // 
+            // txt_Saving
+            // 
+            this.txt_Saving.Location = new System.Drawing.Point(87, 17);
+            this.txt_Saving.Name = "txt_Saving";
+            this.txt_Saving.Size = new System.Drawing.Size(245, 20);
+            this.txt_Saving.TabIndex = 1;
+            // 
+            // lbl_Warning
+            // 
+            this.lbl_Warning.AutoSize = true;
+            this.lbl_Warning.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Warning.Location = new System.Drawing.Point(8, 74);
+            this.lbl_Warning.Name = "lbl_Warning";
+            this.lbl_Warning.Size = new System.Drawing.Size(337, 13);
+            this.lbl_Warning.TabIndex = 8;
+            this.lbl_Warning.Text = "Warning: After start searching, you are not enable to change the path.";
+            // 
+            // lbl_FileName
+            // 
+            this.lbl_FileName.AutoSize = true;
+            this.lbl_FileName.Location = new System.Drawing.Point(3, 52);
+            this.lbl_FileName.Name = "lbl_FileName";
+            this.lbl_FileName.Size = new System.Drawing.Size(68, 13);
+            this.lbl_FileName.TabIndex = 9;
+            this.lbl_FileName.Text = "Saving Path:";
+            // 
+            // txt_FileName
+            // 
+            this.txt_FileName.Location = new System.Drawing.Point(87, 49);
+            this.txt_FileName.Name = "txt_FileName";
+            this.txt_FileName.Size = new System.Drawing.Size(245, 20);
+            this.txt_FileName.TabIndex = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 560);
+            this.ClientSize = new System.Drawing.Size(720, 576);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
@@ -341,6 +430,8 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -372,6 +463,14 @@
         private System.Windows.Forms.Label lblTotalDocs;
         private System.Windows.Forms.Button btn_Next;
         private System.Windows.Forms.Button btn_Previous;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label lbl_Saving;
+        private System.Windows.Forms.Button btn_SaveBrowse;
+        private System.Windows.Forms.Label lbl_ExportPath;
+        private System.Windows.Forms.TextBox txt_Saving;
+        private System.Windows.Forms.Label lbl_Warning;
+        private System.Windows.Forms.TextBox txt_FileName;
+        private System.Windows.Forms.Label lbl_FileName;
     }
 }
 

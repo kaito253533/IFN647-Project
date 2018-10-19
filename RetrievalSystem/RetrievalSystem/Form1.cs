@@ -24,6 +24,9 @@ namespace RetrievalSystem
         // Paging...
         int total = 0;
         int skip = 0;
+
+        // Saving...
+        int TopicID = 0;
         List<Collection> ResultCollectionList = new List<Collection>();
 
         #region Step 1: Indexing
@@ -108,8 +111,23 @@ namespace RetrievalSystem
             }
 
         }
-            private void lblSearch_Click(object sender, EventArgs e)
+        private void lblSearch_Click(object sender, EventArgs e)
         {
+            //Chech the saving path
+            if (String.IsNullOrEmpty(txt_Saving.Text))
+            {
+                MessageBox.Show("Please choose a path to save results.");
+                return;
+            }
+            if (String.IsNullOrEmpty(txt_FileName.Text))
+            {
+                MessageBox.Show("Please input a file name.");
+                return;
+            }
+
+            btn_SaveBrowse.Visible = false;
+            txt_Saving.ReadOnly = true;
+            txt_FileName.ReadOnly = true;
 
             // Calculate the Process Time
             Stopwatch stopWatch = new Stopwatch();
@@ -130,6 +148,18 @@ namespace RetrievalSystem
             // Set the total number of documents
             total = resultList.Count();
             lblTotalDocs.Text = total + " docs";
+
+            // Saving
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(String.Format("{0}\\{1}.txt",txt_Saving.Text, txt_FileName.Text), true))
+            {
+                foreach (Collection c in ResultCollectionList)
+                {
+                    string TopicIDString = string.Format("{0:000}", TopicID);
+                    file.WriteLine(String.Format("{0} {1} {2} {3} {4} {5}", TopicIDString, "Q0", c.DocID, "Rank", "Score", "9913661_9913351_10032711_RetrievalHero"));
+                }
+                TopicID++;
+            }
         }
 
         private void GenerateListView()
@@ -141,6 +171,7 @@ namespace RetrievalSystem
             lv_Result.Columns.Add("Author", -2, HorizontalAlignment.Left);
             lv_Result.Columns.Add("Bibliographic", -2, HorizontalAlignment.Left);
             lv_Result.Columns.Add("Abtract", -2, HorizontalAlignment.Left);
+            lv_Result.Columns.Add("", -2, HorizontalAlignment.Left);
 
             // Add items to listview
             foreach (Collection c in ResultCollectionList.Skip(skip).Take(10))
@@ -148,12 +179,10 @@ namespace RetrievalSystem
                 string abtractFirstSentence = c.Words.Split('.')[0];
                 string[] row = { c.DocID, c.Title, c.Author, c.Bibliographic, string.IsNullOrEmpty(abtractFirstSentence) ? string.Empty : abtractFirstSentence.TrimEnd() + "." };
                 var listViewItem = new ListViewItem(row);
+                
                 lv_Result.Items.Add(listViewItem);
             }
         }
-
-
-        #endregion
 
         private void btn_Previous_Click(object sender, EventArgs e)
         {
@@ -182,5 +211,19 @@ namespace RetrievalSystem
                 GenerateListView();
             }
         }
+
+        private void btn_SaveBrowse_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.Description = "Please choose a path to save results";
+
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                string sSelectedPath = fbd.SelectedPath;
+                txt_Saving.Text = sSelectedPath;
+            }
+        }
+        #endregion
+
     }
 }
