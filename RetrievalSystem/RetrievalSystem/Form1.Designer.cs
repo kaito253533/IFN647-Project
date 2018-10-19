@@ -51,6 +51,9 @@
             this.ddl_Type = new System.Windows.Forms.ComboBox();
             this.lbl_SearchType = new System.Windows.Forms.Label();
             this.ddl_Fields = new System.Windows.Forms.ComboBox();
+            this.btn_Previous = new System.Windows.Forms.Button();
+            this.btn_Next = new System.Windows.Forms.Button();
+            this.lblTotalDocs = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -169,6 +172,9 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Menu;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.lblTotalDocs);
+            this.panel2.Controls.Add(this.btn_Next);
+            this.panel2.Controls.Add(this.btn_Previous);
             this.panel2.Controls.Add(this.ddl_Fields);
             this.panel2.Controls.Add(this.lbl_SearchType);
             this.panel2.Controls.Add(this.ddl_Type);
@@ -183,14 +189,14 @@
             this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel2.Location = new System.Drawing.Point(12, 106);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(696, 314);
+            this.panel2.Size = new System.Drawing.Size(696, 357);
             this.panel2.TabIndex = 7;
             // 
             // lv_Result
             // 
             this.lv_Result.Location = new System.Drawing.Point(11, 91);
             this.lv_Result.Name = "lv_Result";
-            this.lv_Result.Size = new System.Drawing.Size(670, 210);
+            this.lv_Result.Size = new System.Drawing.Size(670, 230);
             this.lv_Result.TabIndex = 9;
             this.lv_Result.UseCompatibleStateImageBehavior = false;
             // 
@@ -293,6 +299,35 @@
             this.ddl_Fields.Size = new System.Drawing.Size(121, 21);
             this.ddl_Fields.TabIndex = 14;
             // 
+            // btn_Previous
+            // 
+            this.btn_Previous.Location = new System.Drawing.Point(520, 327);
+            this.btn_Previous.Name = "btn_Previous";
+            this.btn_Previous.Size = new System.Drawing.Size(75, 23);
+            this.btn_Previous.TabIndex = 15;
+            this.btn_Previous.Text = "Previous";
+            this.btn_Previous.UseVisualStyleBackColor = true;
+            this.btn_Previous.Click += new System.EventHandler(this.btn_Previous_Click);
+            // 
+            // btn_Next
+            // 
+            this.btn_Next.Location = new System.Drawing.Point(606, 327);
+            this.btn_Next.Name = "btn_Next";
+            this.btn_Next.Size = new System.Drawing.Size(75, 23);
+            this.btn_Next.TabIndex = 16;
+            this.btn_Next.Text = "Next";
+            this.btn_Next.UseVisualStyleBackColor = true;
+            this.btn_Next.Click += new System.EventHandler(this.btn_Next_Click);
+            // 
+            // lblTotalDocs
+            // 
+            this.lblTotalDocs.AutoSize = true;
+            this.lblTotalDocs.Location = new System.Drawing.Point(440, 337);
+            this.lblTotalDocs.Name = "lblTotalDocs";
+            this.lblTotalDocs.Size = new System.Drawing.Size(39, 13);
+            this.lblTotalDocs.TabIndex = 17;
+            this.lblTotalDocs.Text = "0 docs";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -334,6 +369,9 @@
         private System.Windows.Forms.Label lbl_SearchType;
         private System.Windows.Forms.ComboBox ddl_Type;
         private System.Windows.Forms.ComboBox ddl_Fields;
+        private System.Windows.Forms.Label lblTotalDocs;
+        private System.Windows.Forms.Button btn_Next;
+        private System.Windows.Forms.Button btn_Previous;
     }
 }
 

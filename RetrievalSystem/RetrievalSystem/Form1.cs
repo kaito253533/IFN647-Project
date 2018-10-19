@@ -21,8 +21,12 @@ namespace RetrievalSystem
             ddl_Fields.SelectedIndex = 0;
         }
 
+        // Paging...
+        int total = 0;
+        int skip = 0;
+        List<Collection> ResultCollectionList = new List<Collection>();
 
-        # region Step 1: Indexing
+        #region Step 1: Indexing
         private void btn_CollectionPath_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -106,7 +110,7 @@ namespace RetrievalSystem
         }
             private void lblSearch_Click(object sender, EventArgs e)
         {
-            
+
             // Calculate the Process Time
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -116,12 +120,20 @@ namespace RetrievalSystem
 
             // Searching and generate result
             List<string> resultList = searcher.DisplayResults(searcher.SearchIndex(txt_InformationNeeds.Text), generator.collectionList);
-            List<Collection> ResultCollectionList = generator.collectionList.Where(n => resultList.Contains(n.DocID)).ToList();
+            ResultCollectionList = generator.collectionList.Where(n => resultList.Contains(n.DocID)).ToList();
             stopWatch.Stop();
             long ts = stopWatch.ElapsedMilliseconds;
             lbl_SearchingTime.Text = ts.ToString() + " ms";
 
             // Set columns to listview
+            GenerateListView();
+            // Set the total number of documents
+            total = resultList.Count();
+            lblTotalDocs.Text = total + " docs";
+        }
+
+        private void GenerateListView()
+        {
             lv_Result.Clear();
             lv_Result.View = View.Details;
             lv_Result.Columns.Add("DocID", -2, HorizontalAlignment.Left);
@@ -131,15 +143,42 @@ namespace RetrievalSystem
             lv_Result.Columns.Add("Abtract", -2, HorizontalAlignment.Left);
 
             // Add items to listview
-            foreach (Collection c in ResultCollectionList)
+            foreach (Collection c in ResultCollectionList.Skip(skip).Take(10))
             {
                 string abtractFirstSentence = c.Words.Split('.')[0];
-                string[] row = { c.DocID, c.Title, c.Author, c.Bibliographic, string.IsNullOrEmpty(abtractFirstSentence) ? string.Empty : abtractFirstSentence.TrimEnd() + "."};
+                string[] row = { c.DocID, c.Title, c.Author, c.Bibliographic, string.IsNullOrEmpty(abtractFirstSentence) ? string.Empty : abtractFirstSentence.TrimEnd() + "." };
                 var listViewItem = new ListViewItem(row);
                 lv_Result.Items.Add(listViewItem);
             }
         }
 
+
         #endregion
+
+        private void btn_Previous_Click(object sender, EventArgs e)
+        {
+            if (skip >= 10)
+            {
+                skip = skip - 10;
+                GenerateListView();
+            }
+            else
+            {
+                MessageBox.Show("You are in the first page!");
+            }
+        }
+
+        private void btn_Next_Click(object sender, EventArgs e)
+        {
+            if (skip + 10 > total)
+            {
+                MessageBox.Show("You are in the last page!");
+            }
+            else
+            {
+                skip = skip + 10;
+                GenerateListView();
+            }
+        }
     }
 }

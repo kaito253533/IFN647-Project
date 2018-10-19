@@ -60,7 +60,7 @@ namespace RetrievalSystem
         {
             text.ToLower();
             Query query = parser.Parse(text);
-            Lucene.Net.Search.TopDocs doc = searcher.Search(query, 10);
+            Lucene.Net.Search.TopDocs doc = searcher.Search(query, 1000);
 
             return doc;
         }
