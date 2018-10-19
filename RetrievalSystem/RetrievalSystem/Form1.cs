@@ -61,7 +61,6 @@ namespace RetrievalSystem
 
 
             // Do the index here.
-        
             if (!generator.IsDirectoryEmpty(txt_IndexPath.Text))
             {
                 if (MessageBox.Show("The directory is not empty, do you want to delete all the files inside? (Yes-Delete All, No-Select Again)",
@@ -94,13 +93,19 @@ namespace RetrievalSystem
         #region Step 2: Searching
         private void lblSearch_Click(object sender, EventArgs e)
         {
-            
+            // Calculate the Process Time
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
             Searcher searcher = new Searcher(txt_IndexPath.Text, generator.analyzer, generator.writer);
             searcher.CreateSearcher();
             searcher.CreateParser();
-            
+
+            // Searching and generate result
             List<string> resultList = searcher.DisplayResults(searcher.SearchIndex(txt_InformationNeeds.Text), generator.collectionList);
             List<Collection> ResultCollectionList = generator.collectionList.Where(n => resultList.Contains(n.DocID)).ToList();
+            stopWatch.Stop();
+            long ts = stopWatch.ElapsedMilliseconds;
+            lbl_SearchingTime.Text = ts.ToString() + " ms";
 
             // Set columns to listview
             lv_Result.Clear();

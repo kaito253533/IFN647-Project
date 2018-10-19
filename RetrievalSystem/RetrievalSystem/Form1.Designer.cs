@@ -40,12 +40,14 @@
             this.lbl_IndexingTimeName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lv_Result = new System.Windows.Forms.ListView();
             this.lbl_Result = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblSearch = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_InformationNeeds = new System.Windows.Forms.TextBox();
-            this.lv_Result = new System.Windows.Forms.ListView();
+            this.lbl_SearchingTime = new System.Windows.Forms.Label();
+            this.lbl_ProcessTimeForSearch = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -164,6 +166,8 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Menu;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.lbl_SearchingTime);
+            this.panel2.Controls.Add(this.lbl_ProcessTimeForSearch);
             this.panel2.Controls.Add(this.lv_Result);
             this.panel2.Controls.Add(this.lbl_Result);
             this.panel2.Controls.Add(this.label4);
@@ -175,6 +179,14 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(696, 290);
             this.panel2.TabIndex = 7;
+            // 
+            // lv_Result
+            // 
+            this.lv_Result.Location = new System.Drawing.Point(6, 62);
+            this.lv_Result.Name = "lv_Result";
+            this.lv_Result.Size = new System.Drawing.Size(670, 210);
+            this.lv_Result.TabIndex = 9;
+            this.lv_Result.UseCompatibleStateImageBehavior = false;
             // 
             // lbl_Result
             // 
@@ -221,13 +233,23 @@
             this.txt_InformationNeeds.Size = new System.Drawing.Size(507, 20);
             this.txt_InformationNeeds.TabIndex = 1;
             // 
-            // lv_Result
+            // lbl_SearchingTime
             // 
-            this.lv_Result.Location = new System.Drawing.Point(6, 62);
-            this.lv_Result.Name = "lv_Result";
-            this.lv_Result.Size = new System.Drawing.Size(670, 210);
-            this.lv_Result.TabIndex = 9;
-            this.lv_Result.UseCompatibleStateImageBehavior = false;
+            this.lbl_SearchingTime.AutoSize = true;
+            this.lbl_SearchingTime.Location = new System.Drawing.Point(500, 45);
+            this.lbl_SearchingTime.Name = "lbl_SearchingTime";
+            this.lbl_SearchingTime.Size = new System.Drawing.Size(29, 13);
+            this.lbl_SearchingTime.TabIndex = 11;
+            this.lbl_SearchingTime.Text = "0 ms";
+            // 
+            // lbl_ProcessTimeForSearch
+            // 
+            this.lbl_ProcessTimeForSearch.AutoSize = true;
+            this.lbl_ProcessTimeForSearch.Location = new System.Drawing.Point(420, 45);
+            this.lbl_ProcessTimeForSearch.Name = "lbl_ProcessTimeForSearch";
+            this.lbl_ProcessTimeForSearch.Size = new System.Drawing.Size(74, 13);
+            this.lbl_ProcessTimeForSearch.TabIndex = 10;
+            this.lbl_ProcessTimeForSearch.Text = "Process Time:";
             // 
             // Form1
             // 
@@ -265,6 +287,8 @@
         private System.Windows.Forms.TextBox txt_InformationNeeds;
         private System.Windows.Forms.Label lbl_Result;
         private System.Windows.Forms.ListView lv_Result;
+        private System.Windows.Forms.Label lbl_SearchingTime;
+        private System.Windows.Forms.Label lbl_ProcessTimeForSearch;
     }
 }
 
