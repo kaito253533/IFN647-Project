@@ -40,28 +40,28 @@
             this.lbl_IndexingTimeName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblTotalDocs = new System.Windows.Forms.Label();
+            this.btn_Next = new System.Windows.Forms.Button();
+            this.btn_Previous = new System.Windows.Forms.Button();
+            this.ddl_Fields = new System.Windows.Forms.ComboBox();
+            this.lbl_SearchType = new System.Windows.Forms.Label();
+            this.ddl_Type = new System.Windows.Forms.ComboBox();
+            this.lbl_SearchingTime = new System.Windows.Forms.Label();
+            this.lbl_ProcessTimeForSearch = new System.Windows.Forms.Label();
             this.lv_Result = new System.Windows.Forms.ListView();
             this.lbl_Result = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblSearch = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_InformationNeeds = new System.Windows.Forms.TextBox();
-            this.lbl_SearchingTime = new System.Windows.Forms.Label();
-            this.lbl_ProcessTimeForSearch = new System.Windows.Forms.Label();
-            this.ddl_Type = new System.Windows.Forms.ComboBox();
-            this.lbl_SearchType = new System.Windows.Forms.Label();
-            this.ddl_Fields = new System.Windows.Forms.ComboBox();
-            this.btn_Previous = new System.Windows.Forms.Button();
-            this.btn_Next = new System.Windows.Forms.Button();
-            this.lblTotalDocs = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txt_FileName = new System.Windows.Forms.TextBox();
+            this.lbl_FileName = new System.Windows.Forms.Label();
+            this.lbl_Warning = new System.Windows.Forms.Label();
             this.lbl_Saving = new System.Windows.Forms.Label();
             this.btn_SaveBrowse = new System.Windows.Forms.Button();
             this.lbl_ExportPath = new System.Windows.Forms.Label();
             this.txt_Saving = new System.Windows.Forms.TextBox();
-            this.lbl_Warning = new System.Windows.Forms.Label();
-            this.lbl_FileName = new System.Windows.Forms.Label();
-            this.txt_FileName = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -201,6 +201,91 @@
             this.panel2.Size = new System.Drawing.Size(696, 359);
             this.panel2.TabIndex = 7;
             // 
+            // lblTotalDocs
+            // 
+            this.lblTotalDocs.AutoSize = true;
+            this.lblTotalDocs.Location = new System.Drawing.Point(440, 337);
+            this.lblTotalDocs.Name = "lblTotalDocs";
+            this.lblTotalDocs.Size = new System.Drawing.Size(39, 13);
+            this.lblTotalDocs.TabIndex = 17;
+            this.lblTotalDocs.Text = "0 docs";
+            // 
+            // btn_Next
+            // 
+            this.btn_Next.Location = new System.Drawing.Point(606, 327);
+            this.btn_Next.Name = "btn_Next";
+            this.btn_Next.Size = new System.Drawing.Size(75, 23);
+            this.btn_Next.TabIndex = 16;
+            this.btn_Next.Text = "Next";
+            this.btn_Next.UseVisualStyleBackColor = true;
+            this.btn_Next.Visible = false;
+            this.btn_Next.Click += new System.EventHandler(this.btn_Next_Click);
+            // 
+            // btn_Previous
+            // 
+            this.btn_Previous.Location = new System.Drawing.Point(520, 327);
+            this.btn_Previous.Name = "btn_Previous";
+            this.btn_Previous.Size = new System.Drawing.Size(75, 23);
+            this.btn_Previous.TabIndex = 15;
+            this.btn_Previous.Text = "Previous";
+            this.btn_Previous.UseVisualStyleBackColor = true;
+            this.btn_Previous.Visible = false;
+            this.btn_Previous.Click += new System.EventHandler(this.btn_Previous_Click);
+            // 
+            // ddl_Fields
+            // 
+            this.ddl_Fields.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddl_Fields.FormattingEnabled = true;
+            this.ddl_Fields.Items.AddRange(new object[] {
+            "Title",
+            "Author",
+            "Bibliographic",
+            "Words"});
+            this.ddl_Fields.Location = new System.Drawing.Point(229, 44);
+            this.ddl_Fields.Name = "ddl_Fields";
+            this.ddl_Fields.Size = new System.Drawing.Size(121, 21);
+            this.ddl_Fields.TabIndex = 14;
+            // 
+            // lbl_SearchType
+            // 
+            this.lbl_SearchType.AutoSize = true;
+            this.lbl_SearchType.Location = new System.Drawing.Point(3, 50);
+            this.lbl_SearchType.Name = "lbl_SearchType";
+            this.lbl_SearchType.Size = new System.Drawing.Size(82, 13);
+            this.lbl_SearchType.TabIndex = 13;
+            this.lbl_SearchType.Text = "Searching Type";
+            // 
+            // ddl_Type
+            // 
+            this.ddl_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddl_Type.FormattingEnabled = true;
+            this.ddl_Type.Items.AddRange(new object[] {
+            "Single Term",
+            "Muti-Term"});
+            this.ddl_Type.Location = new System.Drawing.Point(102, 44);
+            this.ddl_Type.Name = "ddl_Type";
+            this.ddl_Type.Size = new System.Drawing.Size(121, 21);
+            this.ddl_Type.TabIndex = 12;
+            this.ddl_Type.SelectedIndexChanged += new System.EventHandler(this.Type_Click);
+            // 
+            // lbl_SearchingTime
+            // 
+            this.lbl_SearchingTime.AutoSize = true;
+            this.lbl_SearchingTime.Location = new System.Drawing.Point(500, 70);
+            this.lbl_SearchingTime.Name = "lbl_SearchingTime";
+            this.lbl_SearchingTime.Size = new System.Drawing.Size(29, 13);
+            this.lbl_SearchingTime.TabIndex = 11;
+            this.lbl_SearchingTime.Text = "0 ms";
+            // 
+            // lbl_ProcessTimeForSearch
+            // 
+            this.lbl_ProcessTimeForSearch.AutoSize = true;
+            this.lbl_ProcessTimeForSearch.Location = new System.Drawing.Point(420, 70);
+            this.lbl_ProcessTimeForSearch.Name = "lbl_ProcessTimeForSearch";
+            this.lbl_ProcessTimeForSearch.Size = new System.Drawing.Size(74, 13);
+            this.lbl_ProcessTimeForSearch.TabIndex = 10;
+            this.lbl_ProcessTimeForSearch.Text = "Process Time:";
+            // 
             // lv_Result
             // 
             this.lv_Result.Location = new System.Drawing.Point(11, 91);
@@ -236,6 +321,7 @@
             this.lblSearch.TabIndex = 2;
             this.lblSearch.Text = "Search";
             this.lblSearch.UseVisualStyleBackColor = true;
+            this.lblSearch.Visible = false;
             this.lblSearch.Click += new System.EventHandler(this.lblSearch_Click);
             // 
             // label6
@@ -254,89 +340,6 @@
             this.txt_InformationNeeds.Size = new System.Drawing.Size(507, 20);
             this.txt_InformationNeeds.TabIndex = 1;
             // 
-            // lbl_SearchingTime
-            // 
-            this.lbl_SearchingTime.AutoSize = true;
-            this.lbl_SearchingTime.Location = new System.Drawing.Point(500, 70);
-            this.lbl_SearchingTime.Name = "lbl_SearchingTime";
-            this.lbl_SearchingTime.Size = new System.Drawing.Size(29, 13);
-            this.lbl_SearchingTime.TabIndex = 11;
-            this.lbl_SearchingTime.Text = "0 ms";
-            // 
-            // lbl_ProcessTimeForSearch
-            // 
-            this.lbl_ProcessTimeForSearch.AutoSize = true;
-            this.lbl_ProcessTimeForSearch.Location = new System.Drawing.Point(420, 70);
-            this.lbl_ProcessTimeForSearch.Name = "lbl_ProcessTimeForSearch";
-            this.lbl_ProcessTimeForSearch.Size = new System.Drawing.Size(74, 13);
-            this.lbl_ProcessTimeForSearch.TabIndex = 10;
-            this.lbl_ProcessTimeForSearch.Text = "Process Time:";
-            // 
-            // ddl_Type
-            // 
-            this.ddl_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddl_Type.FormattingEnabled = true;
-            this.ddl_Type.Items.AddRange(new object[] {
-            "Single Term",
-            "Muti-Term"});
-            this.ddl_Type.Location = new System.Drawing.Point(102, 44);
-            this.ddl_Type.Name = "ddl_Type";
-            this.ddl_Type.Size = new System.Drawing.Size(121, 21);
-            this.ddl_Type.TabIndex = 12;
-            this.ddl_Type.SelectedIndexChanged += new System.EventHandler(this.Type_Click);
-            // 
-            // lbl_SearchType
-            // 
-            this.lbl_SearchType.AutoSize = true;
-            this.lbl_SearchType.Location = new System.Drawing.Point(3, 50);
-            this.lbl_SearchType.Name = "lbl_SearchType";
-            this.lbl_SearchType.Size = new System.Drawing.Size(82, 13);
-            this.lbl_SearchType.TabIndex = 13;
-            this.lbl_SearchType.Text = "Searching Type";
-            // 
-            // ddl_Fields
-            // 
-            this.ddl_Fields.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddl_Fields.FormattingEnabled = true;
-            this.ddl_Fields.Items.AddRange(new object[] {
-            "Title",
-            "Author",
-            "Bibliographic",
-            "Words"});
-            this.ddl_Fields.Location = new System.Drawing.Point(229, 44);
-            this.ddl_Fields.Name = "ddl_Fields";
-            this.ddl_Fields.Size = new System.Drawing.Size(121, 21);
-            this.ddl_Fields.TabIndex = 14;
-            // 
-            // btn_Previous
-            // 
-            this.btn_Previous.Location = new System.Drawing.Point(520, 327);
-            this.btn_Previous.Name = "btn_Previous";
-            this.btn_Previous.Size = new System.Drawing.Size(75, 23);
-            this.btn_Previous.TabIndex = 15;
-            this.btn_Previous.Text = "Previous";
-            this.btn_Previous.UseVisualStyleBackColor = true;
-            this.btn_Previous.Click += new System.EventHandler(this.btn_Previous_Click);
-            // 
-            // btn_Next
-            // 
-            this.btn_Next.Location = new System.Drawing.Point(606, 327);
-            this.btn_Next.Name = "btn_Next";
-            this.btn_Next.Size = new System.Drawing.Size(75, 23);
-            this.btn_Next.TabIndex = 16;
-            this.btn_Next.Text = "Next";
-            this.btn_Next.UseVisualStyleBackColor = true;
-            this.btn_Next.Click += new System.EventHandler(this.btn_Next_Click);
-            // 
-            // lblTotalDocs
-            // 
-            this.lblTotalDocs.AutoSize = true;
-            this.lblTotalDocs.Location = new System.Drawing.Point(440, 337);
-            this.lblTotalDocs.Name = "lblTotalDocs";
-            this.lblTotalDocs.Size = new System.Drawing.Size(39, 13);
-            this.lblTotalDocs.TabIndex = 17;
-            this.lblTotalDocs.Text = "0 docs";
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Menu;
@@ -353,6 +356,32 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(696, 95);
             this.panel3.TabIndex = 8;
+            // 
+            // txt_FileName
+            // 
+            this.txt_FileName.Location = new System.Drawing.Point(87, 49);
+            this.txt_FileName.Name = "txt_FileName";
+            this.txt_FileName.Size = new System.Drawing.Size(245, 20);
+            this.txt_FileName.TabIndex = 10;
+            // 
+            // lbl_FileName
+            // 
+            this.lbl_FileName.AutoSize = true;
+            this.lbl_FileName.Location = new System.Drawing.Point(3, 52);
+            this.lbl_FileName.Name = "lbl_FileName";
+            this.lbl_FileName.Size = new System.Drawing.Size(68, 13);
+            this.lbl_FileName.TabIndex = 9;
+            this.lbl_FileName.Text = "Saving Path:";
+            // 
+            // lbl_Warning
+            // 
+            this.lbl_Warning.AutoSize = true;
+            this.lbl_Warning.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Warning.Location = new System.Drawing.Point(8, 74);
+            this.lbl_Warning.Name = "lbl_Warning";
+            this.lbl_Warning.Size = new System.Drawing.Size(337, 13);
+            this.lbl_Warning.TabIndex = 8;
+            this.lbl_Warning.Text = "Warning: After start searching, you are not enable to change the path.";
             // 
             // lbl_Saving
             // 
@@ -389,32 +418,6 @@
             this.txt_Saving.Name = "txt_Saving";
             this.txt_Saving.Size = new System.Drawing.Size(245, 20);
             this.txt_Saving.TabIndex = 1;
-            // 
-            // lbl_Warning
-            // 
-            this.lbl_Warning.AutoSize = true;
-            this.lbl_Warning.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Warning.Location = new System.Drawing.Point(8, 74);
-            this.lbl_Warning.Name = "lbl_Warning";
-            this.lbl_Warning.Size = new System.Drawing.Size(337, 13);
-            this.lbl_Warning.TabIndex = 8;
-            this.lbl_Warning.Text = "Warning: After start searching, you are not enable to change the path.";
-            // 
-            // lbl_FileName
-            // 
-            this.lbl_FileName.AutoSize = true;
-            this.lbl_FileName.Location = new System.Drawing.Point(3, 52);
-            this.lbl_FileName.Name = "lbl_FileName";
-            this.lbl_FileName.Size = new System.Drawing.Size(68, 13);
-            this.lbl_FileName.TabIndex = 9;
-            this.lbl_FileName.Text = "Saving Path:";
-            // 
-            // txt_FileName
-            // 
-            this.txt_FileName.Location = new System.Drawing.Point(87, 49);
-            this.txt_FileName.Name = "txt_FileName";
-            this.txt_FileName.Size = new System.Drawing.Size(245, 20);
-            this.txt_FileName.TabIndex = 10;
             // 
             // Form1
             // 

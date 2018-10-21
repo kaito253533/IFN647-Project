@@ -85,7 +85,10 @@ namespace RetrievalSystem
                 Indexing(generator);
             }
 
-            
+            if (generator.IsIndexing == true)
+            {
+                lblSearch.Visible = true;
+            }
         }
 
         private void Indexing( IndexGenerator generator)
@@ -222,6 +225,9 @@ namespace RetrievalSystem
                 
                 lv_Result.Items.Add(listViewItem);
             }
+
+            btn_Previous.Visible = true;
+            btn_Next.Visible = true;
         }
 
         private void btn_Previous_Click(object sender, EventArgs e)

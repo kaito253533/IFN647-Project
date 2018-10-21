@@ -18,6 +18,7 @@ namespace RetrievalSystem
         public Lucene.Net.Analysis.Analyzer analyzer { get; set; }
         public Lucene.Net.Index.IndexWriter writer { get; set; }
         public List<Collection> collectionList{ get; set; }
+        public Boolean IsIndexing { get; set; }
 
         public static Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
 
@@ -148,6 +149,8 @@ namespace RetrievalSystem
 
             //Clean
             CleanUp();
+
+            IsIndexing = true;
         }
 
         public void CleanUp()
