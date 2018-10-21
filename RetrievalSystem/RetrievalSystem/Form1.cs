@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace RetrievalSystem
         int skip = 0;
 
         // Saving...
-        int TopicID = 0;
+        int TopicID = 1;
         List<Collection> ResultCollectionList = new List<Collection>();
 
         #region Step 1: Indexing
@@ -113,7 +114,7 @@ namespace RetrievalSystem
         }
         private void lblSearch_Click(object sender, EventArgs e)
         {
-            //Chech the saving path
+            //Check the saving path
             if (String.IsNullOrEmpty(txt_Saving.Text))
             {
                 MessageBox.Show("Please choose a path to save results.");
@@ -123,6 +124,32 @@ namespace RetrievalSystem
             {
                 MessageBox.Show("Please input a file name.");
                 return;
+            }
+            // Check is existing or new file.
+            String filePath = String.Format("{0}\\{1}.txt", txt_Saving.Text, txt_FileName.Text);
+            if (File.Exists(filePath))
+            {
+                if (MessageBox.Show("The file is existing, do you want to append text into the file? (Yes: append it, No: Set a new file name.)",
+                        "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    // User wanna append it, so get the Topic ID from document...
+                    var lastLine = File.ReadLines(filePath).Last();
+                    if (!String.IsNullOrEmpty(lastLine))
+                    {
+                        var firstword = lastLine.ToString().Split(' ')[0];
+                        try
+                        {
+                            TopicID = Convert.ToInt32(firstword) + 1;
+                        }
+                        catch (Exception ex) {
+                            MessageBox.Show("Fail appending! The format in the file is wrong. Please set a new file name.");
+                            return;
+                        }
+                    }
+                }
+                else {
+                    return;
+                }
             }
 
             btn_SaveBrowse.Visible = false;
@@ -150,8 +177,6 @@ namespace RetrievalSystem
                      Words = c.Words,
                      Score = r.Value
                  }).OrderByDescending(n => n.Score).ToList();
-
-
             stopWatch.Stop();
             long ts = stopWatch.ElapsedMilliseconds;
             lbl_SearchingTime.Text = ts.ToString() + " ms";
@@ -164,7 +189,7 @@ namespace RetrievalSystem
 
             // Saving
             using (System.IO.StreamWriter file =
-            new System.IO.StreamWriter(String.Format("{0}\\{1}.txt",txt_Saving.Text, txt_FileName.Text), true))
+            new System.IO.StreamWriter(filePath, true))
             {
                 int rank = 1;
                 foreach (Collection c in ResultCollectionList)
