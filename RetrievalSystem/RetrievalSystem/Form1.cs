@@ -137,8 +137,21 @@ namespace RetrievalSystem
             searcher.CreateParser(ddl_Type.SelectedItem.ToString(), ddl_Fields.SelectedItem.ToString());
 
             // Searching and generate result
-            List<string> resultList = searcher.DisplayResults(searcher.SearchIndex(txt_InformationNeeds.Text), generator.collectionList);
-            ResultCollectionList = generator.collectionList.Where(n => resultList.Contains(n.DocID)).ToList();
+            Dictionary<string, float> resultList = searcher.DisplayResults(searcher.SearchIndex(txt_InformationNeeds.Text), generator.collectionList);
+            ResultCollectionList =
+                (from c in generator.collectionList
+                 join r in resultList on c.DocID equals r.Key
+                 select new Collection
+                 {
+                     DocID = c.DocID,
+                     Title = c.Title,
+                     Author = c.Author,
+                     Bibliographic = c.Bibliographic,
+                     Words = c.Words,
+                     Score = r.Value
+                 }).OrderByDescending(n => n.Score).ToList();
+
+
             stopWatch.Stop();
             long ts = stopWatch.ElapsedMilliseconds;
             lbl_SearchingTime.Text = ts.ToString() + " ms";
@@ -153,10 +166,12 @@ namespace RetrievalSystem
             using (System.IO.StreamWriter file =
             new System.IO.StreamWriter(String.Format("{0}\\{1}.txt",txt_Saving.Text, txt_FileName.Text), true))
             {
+                int rank = 1;
                 foreach (Collection c in ResultCollectionList)
                 {
                     string TopicIDString = string.Format("{0:000}", TopicID);
-                    file.WriteLine(String.Format("{0} {1} {2} {3} {4} {5}", TopicIDString, "Q0", c.DocID, "Rank", "Score", "9913661_9913351_10032711_RetrievalHero"));
+                    file.WriteLine(String.Format("{0} {1} {2} {3} {4} {5}", TopicIDString, "Q0", c.DocID, rank.ToString(), c.Score, "9913661_9913351_10032711_RetrievalHero"));
+                    rank = rank + 1;
                 }
                 TopicID++;
             }
