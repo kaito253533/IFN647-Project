@@ -65,17 +65,15 @@ namespace RetrievalSystem
             return doc;
         }
 
-        public Dictionary<string, float> DisplayResults(Lucene.Net.Search.TopDocs docs, List<Collection> collections)
+        public List<string> DisplayResults(Lucene.Net.Search.TopDocs docs, List<Collection> collections)
         {
-            Dictionary<string, float> resultList = new Dictionary<string, float>();
+            List<string> resultList = new List<string>();
             // Get the doc ids for collections
             string[] collection_DocIds = collections.Select(n => n.DocID).ToArray();
             // Get the doc ids for searching result
             foreach (Lucene.Net.Search.ScoreDoc doc in docs.ScoreDocs)
             {
-               
-               resultList.Add(collection_DocIds[doc.Doc], doc.Score);
-               
+               resultList.Add(collection_DocIds[doc.Doc]);
             }
             return resultList;
         }

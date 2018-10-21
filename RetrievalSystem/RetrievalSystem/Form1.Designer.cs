@@ -70,53 +70,65 @@
             // lbl_CollectionPath
             // 
             this.lbl_CollectionPath.AutoSize = true;
-            this.lbl_CollectionPath.Location = new System.Drawing.Point(3, 22);
+            this.lbl_CollectionPath.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_CollectionPath.Location = new System.Drawing.Point(161, 35);
+            this.lbl_CollectionPath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_CollectionPath.Name = "lbl_CollectionPath";
-            this.lbl_CollectionPath.Size = new System.Drawing.Size(81, 13);
+            this.lbl_CollectionPath.Size = new System.Drawing.Size(106, 17);
             this.lbl_CollectionPath.TabIndex = 0;
             this.lbl_CollectionPath.Text = "Collection Path:";
             // 
             // txt_CollectionPath
             // 
-            this.txt_CollectionPath.Location = new System.Drawing.Point(87, 17);
+            this.txt_CollectionPath.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.txt_CollectionPath.Location = new System.Drawing.Point(273, 29);
+            this.txt_CollectionPath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_CollectionPath.Name = "txt_CollectionPath";
-            this.txt_CollectionPath.Size = new System.Drawing.Size(245, 20);
+            this.txt_CollectionPath.Size = new System.Drawing.Size(325, 22);
             this.txt_CollectionPath.TabIndex = 1;
             // 
             // btn_CollectionPath
             // 
-            this.btn_CollectionPath.Location = new System.Drawing.Point(338, 16);
+            this.btn_CollectionPath.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_CollectionPath.Location = new System.Drawing.Point(608, 28);
+            this.btn_CollectionPath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_CollectionPath.Name = "btn_CollectionPath";
-            this.btn_CollectionPath.Size = new System.Drawing.Size(75, 23);
+            this.btn_CollectionPath.Size = new System.Drawing.Size(100, 28);
             this.btn_CollectionPath.TabIndex = 2;
             this.btn_CollectionPath.Text = "Browse";
-            this.btn_CollectionPath.UseVisualStyleBackColor = true;
+            this.btn_CollectionPath.UseVisualStyleBackColor = false;
             this.btn_CollectionPath.Click += new System.EventHandler(this.btn_CollectionPath_Click);
             // 
             // lbl_IndexPath
             // 
             this.lbl_IndexPath.AutoSize = true;
-            this.lbl_IndexPath.Location = new System.Drawing.Point(3, 43);
+            this.lbl_IndexPath.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_IndexPath.Location = new System.Drawing.Point(161, 61);
+            this.lbl_IndexPath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_IndexPath.Name = "lbl_IndexPath";
-            this.lbl_IndexPath.Size = new System.Drawing.Size(61, 13);
+            this.lbl_IndexPath.Size = new System.Drawing.Size(78, 17);
             this.lbl_IndexPath.TabIndex = 3;
             this.lbl_IndexPath.Text = "Index Path:";
             // 
             // txt_IndexPath
             // 
-            this.txt_IndexPath.Location = new System.Drawing.Point(87, 41);
+            this.txt_IndexPath.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.txt_IndexPath.Location = new System.Drawing.Point(273, 58);
+            this.txt_IndexPath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_IndexPath.Name = "txt_IndexPath";
-            this.txt_IndexPath.Size = new System.Drawing.Size(245, 20);
+            this.txt_IndexPath.Size = new System.Drawing.Size(325, 22);
             this.txt_IndexPath.TabIndex = 4;
             // 
             // btn_IndexPath
             // 
-            this.btn_IndexPath.Location = new System.Drawing.Point(338, 41);
+            this.btn_IndexPath.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_IndexPath.Location = new System.Drawing.Point(608, 58);
+            this.btn_IndexPath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_IndexPath.Name = "btn_IndexPath";
-            this.btn_IndexPath.Size = new System.Drawing.Size(75, 23);
+            this.btn_IndexPath.Size = new System.Drawing.Size(100, 28);
             this.btn_IndexPath.TabIndex = 5;
             this.btn_IndexPath.Text = "Browse";
-            this.btn_IndexPath.UseVisualStyleBackColor = true;
+            this.btn_IndexPath.UseVisualStyleBackColor = false;
             this.btn_IndexPath.Click += new System.EventHandler(this.btn_IndexPath_Click);
             // 
             // panel1
@@ -134,46 +146,55 @@
             this.panel1.Controls.Add(this.lbl_CollectionPath);
             this.panel1.Controls.Add(this.txt_CollectionPath);
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel1.Location = new System.Drawing.Point(12, 6);
+            this.panel1.Location = new System.Drawing.Point(182, 75);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(696, 96);
+            this.panel1.Size = new System.Drawing.Size(927, 155);
             this.panel1.TabIndex = 6;
             // 
             // lbl_IndexingTime
             // 
             this.lbl_IndexingTime.AutoSize = true;
-            this.lbl_IndexingTime.Location = new System.Drawing.Point(500, 79);
+            this.lbl_IndexingTime.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_IndexingTime.Location = new System.Drawing.Point(872, 126);
+            this.lbl_IndexingTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_IndexingTime.Name = "lbl_IndexingTime";
-            this.lbl_IndexingTime.Size = new System.Drawing.Size(29, 13);
+            this.lbl_IndexingTime.Size = new System.Drawing.Size(38, 17);
             this.lbl_IndexingTime.TabIndex = 9;
             this.lbl_IndexingTime.Text = "0 ms";
             // 
             // btn_GenerateIndex
             // 
-            this.btn_GenerateIndex.Location = new System.Drawing.Point(615, 69);
+            this.btn_GenerateIndex.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_GenerateIndex.Location = new System.Drawing.Point(381, 88);
+            this.btn_GenerateIndex.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_GenerateIndex.Name = "btn_GenerateIndex";
-            this.btn_GenerateIndex.Size = new System.Drawing.Size(75, 23);
+            this.btn_GenerateIndex.Size = new System.Drawing.Size(100, 28);
             this.btn_GenerateIndex.TabIndex = 8;
             this.btn_GenerateIndex.Text = "Index";
-            this.btn_GenerateIndex.UseVisualStyleBackColor = true;
+            this.btn_GenerateIndex.UseVisualStyleBackColor = false;
             this.btn_GenerateIndex.Click += new System.EventHandler(this.btn_GenerateIndex_Click);
             // 
             // lbl_IndexingTimeName
             // 
             this.lbl_IndexingTimeName.AutoSize = true;
-            this.lbl_IndexingTimeName.Location = new System.Drawing.Point(420, 79);
+            this.lbl_IndexingTimeName.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_IndexingTimeName.Location = new System.Drawing.Point(722, 126);
+            this.lbl_IndexingTimeName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_IndexingTimeName.Name = "lbl_IndexingTimeName";
-            this.lbl_IndexingTimeName.Size = new System.Drawing.Size(74, 13);
+            this.lbl_IndexingTimeName.Size = new System.Drawing.Size(154, 17);
             this.lbl_IndexingTimeName.TabIndex = 7;
-            this.lbl_IndexingTimeName.Text = "Process Time:";
+            this.lbl_IndexingTimeName.Text = "Indexing Process Time:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(2, -1);
+            this.label1.Location = new System.Drawing.Point(401, -1);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 15);
+            this.label1.Size = new System.Drawing.Size(61, 18);
             this.label1.TabIndex = 7;
             this.label1.Text = "Indexing";
             // 
@@ -196,40 +217,42 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.txt_InformationNeeds);
             this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel2.Location = new System.Drawing.Point(12, 210);
+            this.panel2.Location = new System.Drawing.Point(182, 354);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(696, 359);
+            this.panel2.Size = new System.Drawing.Size(927, 407);
             this.panel2.TabIndex = 7;
             // 
             // lblTotalDocs
             // 
             this.lblTotalDocs.AutoSize = true;
-            this.lblTotalDocs.Location = new System.Drawing.Point(440, 337);
+            this.lblTotalDocs.Location = new System.Drawing.Point(587, 415);
+            this.lblTotalDocs.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalDocs.Name = "lblTotalDocs";
-            this.lblTotalDocs.Size = new System.Drawing.Size(39, 13);
+            this.lblTotalDocs.Size = new System.Drawing.Size(50, 17);
             this.lblTotalDocs.TabIndex = 17;
             this.lblTotalDocs.Text = "0 docs";
             // 
             // btn_Next
             // 
-            this.btn_Next.Location = new System.Drawing.Point(606, 327);
+            this.btn_Next.Location = new System.Drawing.Point(822, 429);
+            this.btn_Next.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_Next.Name = "btn_Next";
-            this.btn_Next.Size = new System.Drawing.Size(75, 23);
+            this.btn_Next.Size = new System.Drawing.Size(100, 28);
             this.btn_Next.TabIndex = 16;
             this.btn_Next.Text = "Next";
             this.btn_Next.UseVisualStyleBackColor = true;
-            this.btn_Next.Visible = false;
             this.btn_Next.Click += new System.EventHandler(this.btn_Next_Click);
             // 
             // btn_Previous
             // 
-            this.btn_Previous.Location = new System.Drawing.Point(520, 327);
+            this.btn_Previous.Location = new System.Drawing.Point(707, 429);
+            this.btn_Previous.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_Previous.Name = "btn_Previous";
-            this.btn_Previous.Size = new System.Drawing.Size(75, 23);
+            this.btn_Previous.Size = new System.Drawing.Size(100, 28);
             this.btn_Previous.TabIndex = 15;
             this.btn_Previous.Text = "Previous";
             this.btn_Previous.UseVisualStyleBackColor = true;
-            this.btn_Previous.Visible = false;
             this.btn_Previous.Click += new System.EventHandler(this.btn_Previous_Click);
             // 
             // ddl_Fields
@@ -241,17 +264,19 @@
             "Author",
             "Bibliographic",
             "Words"});
-            this.ddl_Fields.Location = new System.Drawing.Point(229, 44);
+            this.ddl_Fields.Location = new System.Drawing.Point(397, 54);
+            this.ddl_Fields.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ddl_Fields.Name = "ddl_Fields";
-            this.ddl_Fields.Size = new System.Drawing.Size(121, 21);
+            this.ddl_Fields.Size = new System.Drawing.Size(160, 24);
             this.ddl_Fields.TabIndex = 14;
             // 
             // lbl_SearchType
             // 
             this.lbl_SearchType.AutoSize = true;
-            this.lbl_SearchType.Location = new System.Drawing.Point(3, 50);
+            this.lbl_SearchType.Location = new System.Drawing.Point(96, 62);
+            this.lbl_SearchType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_SearchType.Name = "lbl_SearchType";
-            this.lbl_SearchType.Size = new System.Drawing.Size(82, 13);
+            this.lbl_SearchType.Size = new System.Drawing.Size(108, 17);
             this.lbl_SearchType.TabIndex = 13;
             this.lbl_SearchType.Text = "Searching Type";
             // 
@@ -262,82 +287,90 @@
             this.ddl_Type.Items.AddRange(new object[] {
             "Single Term",
             "Muti-Term"});
-            this.ddl_Type.Location = new System.Drawing.Point(102, 44);
+            this.ddl_Type.Location = new System.Drawing.Point(228, 54);
+            this.ddl_Type.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ddl_Type.Name = "ddl_Type";
-            this.ddl_Type.Size = new System.Drawing.Size(121, 21);
+            this.ddl_Type.Size = new System.Drawing.Size(160, 24);
             this.ddl_Type.TabIndex = 12;
             this.ddl_Type.SelectedIndexChanged += new System.EventHandler(this.Type_Click);
             // 
             // lbl_SearchingTime
             // 
             this.lbl_SearchingTime.AutoSize = true;
-            this.lbl_SearchingTime.Location = new System.Drawing.Point(500, 70);
+            this.lbl_SearchingTime.Location = new System.Drawing.Point(773, 113);
+            this.lbl_SearchingTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_SearchingTime.Name = "lbl_SearchingTime";
-            this.lbl_SearchingTime.Size = new System.Drawing.Size(29, 13);
+            this.lbl_SearchingTime.Size = new System.Drawing.Size(38, 17);
             this.lbl_SearchingTime.TabIndex = 11;
             this.lbl_SearchingTime.Text = "0 ms";
             // 
             // lbl_ProcessTimeForSearch
             // 
             this.lbl_ProcessTimeForSearch.AutoSize = true;
-            this.lbl_ProcessTimeForSearch.Location = new System.Drawing.Point(420, 70);
+            this.lbl_ProcessTimeForSearch.Location = new System.Drawing.Point(605, 113);
+            this.lbl_ProcessTimeForSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_ProcessTimeForSearch.Name = "lbl_ProcessTimeForSearch";
-            this.lbl_ProcessTimeForSearch.Size = new System.Drawing.Size(74, 13);
+            this.lbl_ProcessTimeForSearch.Size = new System.Drawing.Size(166, 17);
             this.lbl_ProcessTimeForSearch.TabIndex = 10;
-            this.lbl_ProcessTimeForSearch.Text = "Process Time:";
+            this.lbl_ProcessTimeForSearch.Text = "Searching Process Time:";
             // 
             // lv_Result
             // 
-            this.lv_Result.Location = new System.Drawing.Point(11, 91);
+            this.lv_Result.Location = new System.Drawing.Point(29, 139);
+            this.lv_Result.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lv_Result.Name = "lv_Result";
-            this.lv_Result.Size = new System.Drawing.Size(670, 230);
+            this.lv_Result.Size = new System.Drawing.Size(892, 242);
             this.lv_Result.TabIndex = 9;
             this.lv_Result.UseCompatibleStateImageBehavior = false;
             // 
             // lbl_Result
             // 
             this.lbl_Result.AutoSize = true;
-            this.lbl_Result.Location = new System.Drawing.Point(8, 75);
+            this.lbl_Result.Location = new System.Drawing.Point(96, 118);
+            this.lbl_Result.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Result.Name = "lbl_Result";
-            this.lbl_Result.Size = new System.Drawing.Size(37, 13);
+            this.lbl_Result.Size = new System.Drawing.Size(55, 17);
             this.lbl_Result.TabIndex = 8;
-            this.lbl_Result.Text = "Result";
+            this.lbl_Result.Text = "Results";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(2, -1);
+            this.label4.Location = new System.Drawing.Point(401, 0);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 15);
+            this.label4.Size = new System.Drawing.Size(74, 18);
             this.label4.TabIndex = 7;
             this.label4.Text = "Searching";
             // 
             // lblSearch
             // 
-            this.lblSearch.Location = new System.Drawing.Point(615, 65);
+            this.lblSearch.Location = new System.Drawing.Point(381, 86);
+            this.lblSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(75, 23);
+            this.lblSearch.Size = new System.Drawing.Size(100, 28);
             this.lblSearch.TabIndex = 2;
             this.lblSearch.Text = "Search";
             this.lblSearch.UseVisualStyleBackColor = true;
-            this.lblSearch.Visible = false;
             this.lblSearch.Click += new System.EventHandler(this.lblSearch_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 22);
+            this.label6.Location = new System.Drawing.Point(96, 27);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 13);
+            this.label6.Size = new System.Drawing.Size(123, 17);
             this.label6.TabIndex = 0;
             this.label6.Text = "Information Needs";
             // 
             // txt_InformationNeeds
             // 
-            this.txt_InformationNeeds.Location = new System.Drawing.Point(102, 18);
+            this.txt_InformationNeeds.Location = new System.Drawing.Point(228, 22);
+            this.txt_InformationNeeds.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_InformationNeeds.Name = "txt_InformationNeeds";
-            this.txt_InformationNeeds.Size = new System.Drawing.Size(507, 20);
+            this.txt_InformationNeeds.Size = new System.Drawing.Size(559, 22);
             this.txt_InformationNeeds.TabIndex = 1;
             // 
             // panel3
@@ -352,52 +385,58 @@
             this.panel3.Controls.Add(this.lbl_ExportPath);
             this.panel3.Controls.Add(this.txt_Saving);
             this.panel3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel3.Location = new System.Drawing.Point(12, 109);
+            this.panel3.Location = new System.Drawing.Point(182, 234);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(696, 95);
+            this.panel3.Size = new System.Drawing.Size(927, 116);
             this.panel3.TabIndex = 8;
             // 
             // txt_FileName
             // 
-            this.txt_FileName.Location = new System.Drawing.Point(87, 49);
+            this.txt_FileName.Location = new System.Drawing.Point(288, 59);
+            this.txt_FileName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_FileName.Name = "txt_FileName";
-            this.txt_FileName.Size = new System.Drawing.Size(245, 20);
+            this.txt_FileName.Size = new System.Drawing.Size(325, 22);
             this.txt_FileName.TabIndex = 10;
             // 
             // lbl_FileName
             // 
             this.lbl_FileName.AutoSize = true;
-            this.lbl_FileName.Location = new System.Drawing.Point(3, 52);
+            this.lbl_FileName.Location = new System.Drawing.Point(176, 63);
+            this.lbl_FileName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_FileName.Name = "lbl_FileName";
-            this.lbl_FileName.Size = new System.Drawing.Size(68, 13);
+            this.lbl_FileName.Size = new System.Drawing.Size(69, 17);
             this.lbl_FileName.TabIndex = 9;
-            this.lbl_FileName.Text = "Saving Path:";
+            this.lbl_FileName.Text = "Filename:";
             // 
             // lbl_Warning
             // 
             this.lbl_Warning.AutoSize = true;
             this.lbl_Warning.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Warning.Location = new System.Drawing.Point(8, 74);
+            this.lbl_Warning.Location = new System.Drawing.Point(11, 91);
+            this.lbl_Warning.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Warning.Name = "lbl_Warning";
-            this.lbl_Warning.Size = new System.Drawing.Size(337, 13);
+            this.lbl_Warning.Size = new System.Drawing.Size(446, 17);
             this.lbl_Warning.TabIndex = 8;
-            this.lbl_Warning.Text = "Warning: After start searching, you are not enable to change the path.";
+            this.lbl_Warning.Text = "Warning: After search is started, you are not able to change the path.";
             // 
             // lbl_Saving
             // 
             this.lbl_Saving.AutoSize = true;
             this.lbl_Saving.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Saving.Location = new System.Drawing.Point(2, -1);
+            this.lbl_Saving.Location = new System.Drawing.Point(410, -2);
+            this.lbl_Saving.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Saving.Name = "lbl_Saving";
-            this.lbl_Saving.Size = new System.Drawing.Size(44, 15);
+            this.lbl_Saving.Size = new System.Drawing.Size(52, 18);
             this.lbl_Saving.TabIndex = 7;
             this.lbl_Saving.Text = "Saving";
             // 
             // btn_SaveBrowse
             // 
-            this.btn_SaveBrowse.Location = new System.Drawing.Point(338, 16);
+            this.btn_SaveBrowse.Location = new System.Drawing.Point(623, 19);
+            this.btn_SaveBrowse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_SaveBrowse.Name = "btn_SaveBrowse";
-            this.btn_SaveBrowse.Size = new System.Drawing.Size(75, 23);
+            this.btn_SaveBrowse.Size = new System.Drawing.Size(100, 28);
             this.btn_SaveBrowse.TabIndex = 2;
             this.btn_SaveBrowse.Text = "Browse";
             this.btn_SaveBrowse.UseVisualStyleBackColor = true;
@@ -406,29 +445,34 @@
             // lbl_ExportPath
             // 
             this.lbl_ExportPath.AutoSize = true;
-            this.lbl_ExportPath.Location = new System.Drawing.Point(3, 22);
+            this.lbl_ExportPath.Location = new System.Drawing.Point(176, 26);
+            this.lbl_ExportPath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_ExportPath.Name = "lbl_ExportPath";
-            this.lbl_ExportPath.Size = new System.Drawing.Size(68, 13);
+            this.lbl_ExportPath.Size = new System.Drawing.Size(104, 17);
             this.lbl_ExportPath.TabIndex = 0;
-            this.lbl_ExportPath.Text = "Saving Path:";
+            this.lbl_ExportPath.Text = "Choose a path:";
             // 
             // txt_Saving
             // 
-            this.txt_Saving.Location = new System.Drawing.Point(87, 17);
+            this.txt_Saving.Location = new System.Drawing.Point(288, 20);
+            this.txt_Saving.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_Saving.Name = "txt_Saving";
-            this.txt_Saving.Size = new System.Drawing.Size(245, 20);
+            this.txt_Saving.Size = new System.Drawing.Size(325, 22);
             this.txt_Saving.TabIndex = 1;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 576);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClientSize = new System.Drawing.Size(1206, 785);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Kingsland University Retrieval System";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

@@ -17,7 +17,5 @@ namespace RetrievalSystem
         public string Bibliographic { get; set; }
 
         public string Words { get; set; }
-
-        public float Score { get; set; }
     }
 }
