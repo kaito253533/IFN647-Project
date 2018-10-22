@@ -48,7 +48,6 @@
             this.ddl_Type = new System.Windows.Forms.ComboBox();
             this.lbl_SearchingTime = new System.Windows.Forms.Label();
             this.lbl_ProcessTimeForSearch = new System.Windows.Forms.Label();
-            this.lv_Result = new System.Windows.Forms.ListView();
             this.lbl_Result = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblSearch = new System.Windows.Forms.Button();
@@ -62,9 +61,13 @@
             this.btn_SaveBrowse = new System.Windows.Forms.Button();
             this.lbl_ExportPath = new System.Windows.Forms.Label();
             this.txt_Saving = new System.Windows.Forms.TextBox();
+            this.lbl_Query = new System.Windows.Forms.Label();
+            this.lbl_QueryText = new System.Windows.Forms.Label();
+            this.dv_result = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dv_result)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_CollectionPath
@@ -181,6 +184,9 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Menu;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.dv_result);
+            this.panel2.Controls.Add(this.lbl_QueryText);
+            this.panel2.Controls.Add(this.lbl_Query);
             this.panel2.Controls.Add(this.lblTotalDocs);
             this.panel2.Controls.Add(this.btn_Next);
             this.panel2.Controls.Add(this.btn_Previous);
@@ -189,7 +195,6 @@
             this.panel2.Controls.Add(this.ddl_Type);
             this.panel2.Controls.Add(this.lbl_SearchingTime);
             this.panel2.Controls.Add(this.lbl_ProcessTimeForSearch);
-            this.panel2.Controls.Add(this.lv_Result);
             this.panel2.Controls.Add(this.lbl_Result);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.lblSearch);
@@ -198,13 +203,13 @@
             this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel2.Location = new System.Drawing.Point(12, 210);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(696, 359);
+            this.panel2.Size = new System.Drawing.Size(696, 413);
             this.panel2.TabIndex = 7;
             // 
             // lblTotalDocs
             // 
             this.lblTotalDocs.AutoSize = true;
-            this.lblTotalDocs.Location = new System.Drawing.Point(440, 337);
+            this.lblTotalDocs.Location = new System.Drawing.Point(440, 382);
             this.lblTotalDocs.Name = "lblTotalDocs";
             this.lblTotalDocs.Size = new System.Drawing.Size(39, 13);
             this.lblTotalDocs.TabIndex = 17;
@@ -212,7 +217,7 @@
             // 
             // btn_Next
             // 
-            this.btn_Next.Location = new System.Drawing.Point(606, 327);
+            this.btn_Next.Location = new System.Drawing.Point(606, 372);
             this.btn_Next.Name = "btn_Next";
             this.btn_Next.Size = new System.Drawing.Size(75, 23);
             this.btn_Next.TabIndex = 16;
@@ -223,7 +228,7 @@
             // 
             // btn_Previous
             // 
-            this.btn_Previous.Location = new System.Drawing.Point(520, 327);
+            this.btn_Previous.Location = new System.Drawing.Point(520, 372);
             this.btn_Previous.Name = "btn_Previous";
             this.btn_Previous.Size = new System.Drawing.Size(75, 23);
             this.btn_Previous.TabIndex = 15;
@@ -271,7 +276,7 @@
             // lbl_SearchingTime
             // 
             this.lbl_SearchingTime.AutoSize = true;
-            this.lbl_SearchingTime.Location = new System.Drawing.Point(500, 70);
+            this.lbl_SearchingTime.Location = new System.Drawing.Point(500, 111);
             this.lbl_SearchingTime.Name = "lbl_SearchingTime";
             this.lbl_SearchingTime.Size = new System.Drawing.Size(29, 13);
             this.lbl_SearchingTime.TabIndex = 11;
@@ -280,24 +285,16 @@
             // lbl_ProcessTimeForSearch
             // 
             this.lbl_ProcessTimeForSearch.AutoSize = true;
-            this.lbl_ProcessTimeForSearch.Location = new System.Drawing.Point(420, 70);
+            this.lbl_ProcessTimeForSearch.Location = new System.Drawing.Point(420, 111);
             this.lbl_ProcessTimeForSearch.Name = "lbl_ProcessTimeForSearch";
             this.lbl_ProcessTimeForSearch.Size = new System.Drawing.Size(74, 13);
             this.lbl_ProcessTimeForSearch.TabIndex = 10;
             this.lbl_ProcessTimeForSearch.Text = "Process Time:";
             // 
-            // lv_Result
-            // 
-            this.lv_Result.Location = new System.Drawing.Point(11, 91);
-            this.lv_Result.Name = "lv_Result";
-            this.lv_Result.Size = new System.Drawing.Size(670, 230);
-            this.lv_Result.TabIndex = 9;
-            this.lv_Result.UseCompatibleStateImageBehavior = false;
-            // 
             // lbl_Result
             // 
             this.lbl_Result.AutoSize = true;
-            this.lbl_Result.Location = new System.Drawing.Point(8, 75);
+            this.lbl_Result.Location = new System.Drawing.Point(8, 111);
             this.lbl_Result.Name = "lbl_Result";
             this.lbl_Result.Size = new System.Drawing.Size(37, 13);
             this.lbl_Result.TabIndex = 8;
@@ -315,7 +312,7 @@
             // 
             // lblSearch
             // 
-            this.lblSearch.Location = new System.Drawing.Point(615, 65);
+            this.lblSearch.Location = new System.Drawing.Point(606, 101);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(75, 23);
             this.lblSearch.TabIndex = 2;
@@ -419,11 +416,37 @@
             this.txt_Saving.Size = new System.Drawing.Size(245, 20);
             this.txt_Saving.TabIndex = 1;
             // 
+            // lbl_Query
+            // 
+            this.lbl_Query.AutoSize = true;
+            this.lbl_Query.Location = new System.Drawing.Point(3, 83);
+            this.lbl_Query.Name = "lbl_Query";
+            this.lbl_Query.Size = new System.Drawing.Size(35, 13);
+            this.lbl_Query.TabIndex = 18;
+            this.lbl_Query.Text = "Query";
+            // 
+            // lbl_QueryText
+            // 
+            this.lbl_QueryText.AutoSize = true;
+            this.lbl_QueryText.Location = new System.Drawing.Point(102, 83);
+            this.lbl_QueryText.Name = "lbl_QueryText";
+            this.lbl_QueryText.Size = new System.Drawing.Size(0, 13);
+            this.lbl_QueryText.TabIndex = 19;
+            // 
+            // dv_result
+            // 
+            this.dv_result.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dv_result.Location = new System.Drawing.Point(11, 127);
+            this.dv_result.Name = "dv_result";
+            this.dv_result.Size = new System.Drawing.Size(670, 239);
+            this.dv_result.TabIndex = 20;
+            this.dv_result.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dv_result_CellClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 576);
+            this.ClientSize = new System.Drawing.Size(720, 611);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -435,6 +458,7 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dv_result)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -457,7 +481,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_InformationNeeds;
         private System.Windows.Forms.Label lbl_Result;
-        private System.Windows.Forms.ListView lv_Result;
         private System.Windows.Forms.Label lbl_SearchingTime;
         private System.Windows.Forms.Label lbl_ProcessTimeForSearch;
         private System.Windows.Forms.Label lbl_SearchType;
@@ -474,6 +497,9 @@
         private System.Windows.Forms.Label lbl_Warning;
         private System.Windows.Forms.TextBox txt_FileName;
         private System.Windows.Forms.Label lbl_FileName;
+        private System.Windows.Forms.Label lbl_QueryText;
+        private System.Windows.Forms.Label lbl_Query;
+        private System.Windows.Forms.DataGridView dv_result;
     }
 }
 

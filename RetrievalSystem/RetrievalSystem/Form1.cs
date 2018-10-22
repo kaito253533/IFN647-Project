@@ -168,6 +168,7 @@ namespace RetrievalSystem
 
             // Searching and generate result
             Dictionary<string, float> resultList = searcher.DisplayResults(searcher.SearchIndex(txt_InformationNeeds.Text), generator.collectionList);
+            lbl_QueryText.Text = searcher.query.ToString();
             ResultCollectionList =
                 (from c in generator.collectionList
                  join r in resultList on c.DocID equals r.Key
@@ -207,7 +208,7 @@ namespace RetrievalSystem
 
         private void GenerateListView()
         {
-            lv_Result.Clear();
+            /*lv_Result.Clear();
             lv_Result.View = View.Details;
             lv_Result.Columns.Add("DocID", -2, HorizontalAlignment.Left);
             lv_Result.Columns.Add("Title", -2, HorizontalAlignment.Left);
@@ -215,15 +216,41 @@ namespace RetrievalSystem
             lv_Result.Columns.Add("Bibliographic", -2, HorizontalAlignment.Left);
             lv_Result.Columns.Add("Abtract", -2, HorizontalAlignment.Left);
             lv_Result.Columns.Add("", -2, HorizontalAlignment.Left);
+            */
+
+            dv_result.Columns.Clear();
+            //dv_result.View = View.Details;
+            dv_result.Columns.Add("DocID", "DocID");
+            dv_result.Columns.Add("Title", "Title");
+            dv_result.Columns.Add("Author", "Author");
+            dv_result.Columns.Add("Bibliographic", "Bibliographic");
+            dv_result.Columns.Add("Abtract", "Abtract");
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            dv_result.Columns.Add(btn);
+            btn.HeaderText = "Detail";
+            btn.Text = "Detail";
+            btn.Name = "btn";
+            btn.UseColumnTextForButtonValue = true;
 
             // Add items to listview
             foreach (Collection c in ResultCollectionList.Skip(skip).Take(10))
             {
                 string abtractFirstSentence = c.Words.Split('.')[0];
-                string[] row = { c.DocID, c.Title, c.Author, c.Bibliographic, string.IsNullOrEmpty(abtractFirstSentence) ? string.Empty : abtractFirstSentence.TrimEnd() + "." };
-                var listViewItem = new ListViewItem(row);
+                //string[] row = { c.DocID, c.Title, c.Author, c.Bibliographic, string.IsNullOrEmpty(abtractFirstSentence) ? string.Empty : abtractFirstSentence.TrimEnd() + "." };
+                //var listViewItem = new ListViewItem(row);
                 
-                lv_Result.Items.Add(listViewItem);
+                //Create the new row first and get the index of the new row
+                int rowIndex = this.dv_result.Rows.Add();
+
+                //Obtain a reference to the newly created DataGridViewRow 
+                var newRow = this.dv_result.Rows[rowIndex];
+
+                //Now this won't fail since the row and columns exist 
+                newRow.Cells["DocID"].Value = c.DocID;
+                newRow.Cells["Title"].Value = c.Title;
+                newRow.Cells["Author"].Value = c.Author;
+                newRow.Cells["Bibliographic"].Value = c.Bibliographic;
+                newRow.Cells["Abtract"].Value = string.IsNullOrEmpty(abtractFirstSentence) ? string.Empty : abtractFirstSentence.TrimEnd() + ".";
             }
 
             btn_Previous.Visible = true;
@@ -267,6 +294,20 @@ namespace RetrievalSystem
             {
                 string sSelectedPath = fbd.SelectedPath;
                 txt_Saving.Text = sSelectedPath;
+            }
+        }
+
+        private void dv_result_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex >= 0)
+            {
+                //TODO - Button Clicked - Execute Code Here
+                string FullAbtract = ResultCollectionList.Where(n => n.DocID == dv_result.Rows[e.RowIndex].Cells[0].Value.ToString()).Select( n => n.Words).FirstOrDefault();
+                DetailForm form = new DetailForm(FullAbtract);
+                form.Show();
             }
         }
         #endregion
