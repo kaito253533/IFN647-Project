@@ -157,6 +157,8 @@ namespace RetrievalSystem
 
             //Clean
             CleanUp();
+
+            IsIndexing = true;
         }
 
         public void CleanUp()

@@ -9,12 +9,12 @@ namespace RetrievalSystem
 {
     public class TFSimilarity : DefaultSimilarity 
     {
-       
-           public override float Tf(float freq)
-            {
-               
-                return (float)System.Math.Sqrt(freq);
-            }
+
+        public override float Idf(int docFreq, int numDocs)
+        {
+                return (float)(System.Math.Log(numDocs / (double)(docFreq + 1)) + 1.0);
+                //return (float)System.Math.Sqrt(freq);
+        }
 
         
     }
