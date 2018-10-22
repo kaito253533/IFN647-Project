@@ -13,7 +13,6 @@ namespace RetrievalSystem
 {
     class IndexGenerator
     {
-
         Lucene.Net.Store.Directory indexDirectory;
         public Lucene.Net.Analysis.Analyzer analyzer { get; set; }
         public Lucene.Net.Index.IndexWriter writer { get; set; }
@@ -22,6 +21,8 @@ namespace RetrievalSystem
 
         public static Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
 
+        //change similarity
+        TFSimilarity TFSimilarity;
         // Constructer
         public IndexGenerator()
         {
@@ -29,6 +30,8 @@ namespace RetrievalSystem
             analyzer = new Lucene.Net.Analysis.Standard.StandardAnalyzer(VERSION);
             writer = null;
             collectionList = null;
+            //change similarity
+            TFSimilarity = new TFSimilarity();
         }
 
         public Boolean IsDirectoryEmpty(string indexPath)
@@ -69,6 +72,8 @@ namespace RetrievalSystem
 
             // TODO: Enter code to create the Lucene Writer
             writer = new Lucene.Net.Index.IndexWriter(indexDirectory, analyzer, true, mfl);
+            //change similarity
+            writer.SetSimilarity(TFSimilarity);
         }
 
         // Indexing...
@@ -149,8 +154,6 @@ namespace RetrievalSystem
 
             //Clean
             CleanUp();
-
-            IsIndexing = true;
         }
 
         public void CleanUp()

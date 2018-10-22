@@ -19,6 +19,8 @@ namespace RetrievalSystem
         Lucene.Net.Search.IndexSearcher searcher;
         Lucene.Net.QueryParsers.QueryParser parser;
 
+        Similarity TFSimilarity;
+
         const Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
         const string TEXT_FN = "World";
 
@@ -27,11 +29,13 @@ namespace RetrievalSystem
             this.indexDirectory = Lucene.Net.Store.FSDirectory.Open(indexPath);
             this.analyzer = analyzer;
             this.writer = writer;
+            TFSimilarity = new TFSimilarity();
         }
 
         public void CreateSearcher()
         {
             searcher = new Lucene.Net.Search.IndexSearcher(this.indexDirectory);
+            searcher.Similarity = TFSimilarity;
         }
 
         public void CreateParser(String type, String field)
