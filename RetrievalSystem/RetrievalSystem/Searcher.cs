@@ -21,6 +21,7 @@ namespace RetrievalSystem
         Lucene.Net.Index.IndexWriter writer;
         Lucene.Net.Search.IndexSearcher searcher;
         Lucene.Net.QueryParsers.QueryParser parser;
+        public Query query { get; set; }
 
         Similarity TFSimilarity;
 
@@ -66,7 +67,7 @@ namespace RetrievalSystem
         public Lucene.Net.Search.TopDocs SearchIndex(string text)
         {
             text.ToLower();
-            Query query = parser.Parse(text);
+            query = parser.Parse(text);
             Lucene.Net.Search.TopDocs doc = searcher.Search(query, 1000);
 
             return doc;
