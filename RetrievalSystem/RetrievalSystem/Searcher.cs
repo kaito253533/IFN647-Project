@@ -18,6 +18,7 @@ namespace RetrievalSystem
         Lucene.Net.Index.IndexWriter writer;
         Lucene.Net.Search.IndexSearcher searcher;
         Lucene.Net.QueryParsers.QueryParser parser;
+        Similarity NewSimilarity;
 
         const Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
         const string TEXT_FN = "World";
@@ -27,11 +28,14 @@ namespace RetrievalSystem
             this.indexDirectory = Lucene.Net.Store.FSDirectory.Open(indexPath);
             this.analyzer = analyzer;
             this.writer = writer;
+            NewSimilarity = new CustomSimilarity();
         }
 
         public void CreateSearcher()
         {
             searcher = new Lucene.Net.Search.IndexSearcher(this.indexDirectory);
+            searcher.Similarity = NewSimilarity;
+
         }
 
         public void CreateParser(String type, String field)
@@ -65,15 +69,19 @@ namespace RetrievalSystem
             return doc;
         }
 
-        public List<string> DisplayResults(Lucene.Net.Search.TopDocs docs, List<Collection> collections)
+        public Dictionary<string, float> DisplayResults(Lucene.Net.Search.TopDocs docs, List<Collection> collections)
         {
-            List<string> resultList = new List<string>();
+           
+            Dictionary<string, float> resultList = new Dictionary<string, float>();
             // Get the doc ids for collections
             string[] collection_DocIds = collections.Select(n => n.DocID).ToArray();
             // Get the doc ids for searching result
             foreach (Lucene.Net.Search.ScoreDoc doc in docs.ScoreDocs)
             {
-               resultList.Add(collection_DocIds[doc.Doc]);
+                
+               
+               resultList.Add(collection_DocIds[doc.Doc], doc.Score);
+               
             }
             return resultList;
         }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace RetrievalSystem
         int skip = 0;
 
         // Saving...
-        int TopicID = 0;
+        int TopicID = 1;
         List<Collection> ResultCollectionList = new List<Collection>();
 
         #region Step 1: Indexing
@@ -84,7 +85,10 @@ namespace RetrievalSystem
                 Indexing(generator);
             }
 
-            
+            if (generator.IsIndexing == true)
+            {
+                lblSearch.Visible = true;
+            }
         }
 
         private void Indexing( IndexGenerator generator)
@@ -113,7 +117,7 @@ namespace RetrievalSystem
         }
         private void lblSearch_Click(object sender, EventArgs e)
         {
-            //Chech the saving path
+            //Check the saving path
             if (String.IsNullOrEmpty(txt_Saving.Text))
             {
                 MessageBox.Show("Please choose a path to save results.");
@@ -123,6 +127,32 @@ namespace RetrievalSystem
             {
                 MessageBox.Show("Please input a file name.");
                 return;
+            }
+            // Check is existing or new file.
+            String filePath = String.Format("{0}\\{1}.txt", txt_Saving.Text, txt_FileName.Text);
+            if (File.Exists(filePath))
+            {
+                if (MessageBox.Show("The file is existing, do you want to append text into the file? (Yes: append it, No: Set a new file name.)",
+                        "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    // User wanna append it, so get the Topic ID from document...
+                    var lastLine = File.ReadLines(filePath).Last();
+                    if (!String.IsNullOrEmpty(lastLine))
+                    {
+                        var firstword = lastLine.ToString().Split(' ')[0];
+                        try
+                        {
+                            TopicID = Convert.ToInt32(firstword) + 1;
+                        }
+                        catch (Exception ex) {
+                            MessageBox.Show("Fail appending! The format in the file is wrong. Please set a new file name.");
+                            return;
+                        }
+                    }
+                }
+                else {
+                    return;
+                }
             }
 
             btn_SaveBrowse.Visible = false;
@@ -137,8 +167,19 @@ namespace RetrievalSystem
             searcher.CreateParser(ddl_Type.SelectedItem.ToString(), ddl_Fields.SelectedItem.ToString());
 
             // Searching and generate result
-            List<string> resultList = searcher.DisplayResults(searcher.SearchIndex(txt_InformationNeeds.Text), generator.collectionList);
-            ResultCollectionList = generator.collectionList.Where(n => resultList.Contains(n.DocID)).ToList();
+            Dictionary<string, float> resultList = searcher.DisplayResults(searcher.SearchIndex(txt_InformationNeeds.Text), generator.collectionList);
+            ResultCollectionList =
+                (from c in generator.collectionList
+                 join r in resultList on c.DocID equals r.Key
+                 select new Collection
+                 {
+                     DocID = c.DocID,
+                     Title = c.Title,
+                     Author = c.Author,
+                     Bibliographic = c.Bibliographic,
+                     Words = c.Words,
+                     Score = r.Value
+                 }).OrderByDescending(n => n.Score).ToList();
             stopWatch.Stop();
             long ts = stopWatch.ElapsedMilliseconds;
             lbl_SearchingTime.Text = ts.ToString() + " ms";
@@ -151,12 +192,14 @@ namespace RetrievalSystem
 
             // Saving
             using (System.IO.StreamWriter file =
-            new System.IO.StreamWriter(String.Format("{0}\\{1}.txt",txt_Saving.Text, txt_FileName.Text), true))
+            new System.IO.StreamWriter(filePath, true))
             {
+                int rank = 1;
                 foreach (Collection c in ResultCollectionList)
                 {
                     string TopicIDString = string.Format("{0:000}", TopicID);
-                    file.WriteLine(String.Format("{0} {1} {2} {3} {4} {5}", TopicIDString, "Q0", c.DocID, "Rank", "Score", "9913661_9913351_10032711_RetrievalHero"));
+                    file.WriteLine(String.Format("{0} {1} {2} {3} {4} {5}", TopicIDString, "Q0", c.DocID, rank.ToString(), c.Score, "9913661_9913351_10032711_RetrievalHero"));
+                    rank = rank + 1;
                 }
                 TopicID++;
             }
@@ -177,11 +220,14 @@ namespace RetrievalSystem
             foreach (Collection c in ResultCollectionList.Skip(skip).Take(10))
             {
                 string abtractFirstSentence = c.Words.Split('.')[0];
-                string[] row = { c.DocID, c.Title, c.Author, c.Bibliographic, string.IsNullOrEmpty(abtractFirstSentence) ? string.Empty : abtractFirstSentence.TrimEnd() + "." };
+                string[] row = {c.DocID, c.Title, c.Author, c.Bibliographic, string.IsNullOrEmpty(abtractFirstSentence) ? string.Empty : abtractFirstSentence.TrimEnd() + "." };
                 var listViewItem = new ListViewItem(row);
                 
                 lv_Result.Items.Add(listViewItem);
             }
+
+            btn_Previous.Visible = true;
+            btn_Next.Visible = true;
         }
 
         private void btn_Previous_Click(object sender, EventArgs e)
@@ -223,9 +269,10 @@ namespace RetrievalSystem
                 txt_Saving.Text = sSelectedPath;
             }
         }
+
         #endregion
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void lv_Result_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

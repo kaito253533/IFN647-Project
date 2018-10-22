@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Lucene.Net.Analysis;
 using Lucene.Net.Documents;
 using Lucene.Net.Index;
+using Lucene.Net.Search;
 using Lucene.Net.Store;
 
 namespace RetrievalSystem
@@ -18,8 +19,10 @@ namespace RetrievalSystem
         public Lucene.Net.Analysis.Analyzer analyzer { get; set; }
         public Lucene.Net.Index.IndexWriter writer { get; set; }
         public List<Collection> collectionList{ get; set; }
+        public Boolean IsIndexing { get; set; }
 
         public static Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
+        Similarity NewSimilarity;
 
         // Constructer
         public IndexGenerator()
@@ -28,6 +31,7 @@ namespace RetrievalSystem
             analyzer = new Lucene.Net.Analysis.Standard.StandardAnalyzer(VERSION);
             writer = null;
             collectionList = null;
+            NewSimilarity = new CustomSimilarity();
         }
 
         public Boolean IsDirectoryEmpty(string indexPath)
@@ -68,12 +72,12 @@ namespace RetrievalSystem
 
             // TODO: Enter code to create the Lucene Writer
             writer = new Lucene.Net.Index.IndexWriter(indexDirectory, analyzer, true, mfl);
+            writer.SetSimilarity(NewSimilarity);
         }
 
         // Indexing...
         public void IndexText(List<Collection> collections)
         {
-            
             foreach (Collection c in collections)
             {
                 Lucene.Net.Documents.Document doc = new Lucene.Net.Documents.Document();
@@ -146,9 +150,11 @@ namespace RetrievalSystem
 
             // Create Index
             IndexText(collectionList);
-
+          
             //Clean
             CleanUp();
+
+            IsIndexing = true;
         }
 
         public void CleanUp()
