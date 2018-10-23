@@ -163,9 +163,17 @@ namespace RetrievalSystem
             txt_FileName.ReadOnly = true;
 
             // Calculate the Process Time
+            Lucene.Net.Analysis.Analyzer analyzer;
+            if (ckb_Analyzer.Checked)
+            {
+                analyzer = new Lucene.Net.Analysis.SimpleAnalyzer();
+            }
+            else {
+                analyzer = generator.analyzer;
+            }
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
-            Searcher searcher = new Searcher(txt_IndexPath.Text, generator.analyzer, generator.writer);
+            Searcher searcher = new Searcher(txt_IndexPath.Text, analyzer, generator.writer);
             searcher.CreateSearcher();
             searcher.CreateParser(ddl_Type.SelectedItem.ToString(), ddl_Fields.SelectedItem.ToString());
 

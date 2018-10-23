@@ -40,6 +40,9 @@
             this.lbl_IndexingTimeName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dv_result = new System.Windows.Forms.DataGridView();
+            this.lbl_QueryText = new System.Windows.Forms.Label();
+            this.lbl_Query = new System.Windows.Forms.Label();
             this.lblTotalDocs = new System.Windows.Forms.Label();
             this.btn_Next = new System.Windows.Forms.Button();
             this.btn_Previous = new System.Windows.Forms.Button();
@@ -61,13 +64,11 @@
             this.btn_SaveBrowse = new System.Windows.Forms.Button();
             this.lbl_ExportPath = new System.Windows.Forms.Label();
             this.txt_Saving = new System.Windows.Forms.TextBox();
-            this.lbl_Query = new System.Windows.Forms.Label();
-            this.lbl_QueryText = new System.Windows.Forms.Label();
-            this.dv_result = new System.Windows.Forms.DataGridView();
+            this.ckb_Analyzer = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dv_result)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbl_CollectionPath
@@ -184,6 +185,7 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Menu;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.ckb_Analyzer);
             this.panel2.Controls.Add(this.dv_result);
             this.panel2.Controls.Add(this.lbl_QueryText);
             this.panel2.Controls.Add(this.lbl_Query);
@@ -205,6 +207,32 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(696, 413);
             this.panel2.TabIndex = 7;
+            // 
+            // dv_result
+            // 
+            this.dv_result.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dv_result.Location = new System.Drawing.Point(11, 127);
+            this.dv_result.Name = "dv_result";
+            this.dv_result.Size = new System.Drawing.Size(670, 239);
+            this.dv_result.TabIndex = 20;
+            this.dv_result.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dv_result_CellClick);
+            // 
+            // lbl_QueryText
+            // 
+            this.lbl_QueryText.AutoSize = true;
+            this.lbl_QueryText.Location = new System.Drawing.Point(102, 83);
+            this.lbl_QueryText.Name = "lbl_QueryText";
+            this.lbl_QueryText.Size = new System.Drawing.Size(0, 13);
+            this.lbl_QueryText.TabIndex = 19;
+            // 
+            // lbl_Query
+            // 
+            this.lbl_Query.AutoSize = true;
+            this.lbl_Query.Location = new System.Drawing.Point(3, 83);
+            this.lbl_Query.Name = "lbl_Query";
+            this.lbl_Query.Size = new System.Drawing.Size(35, 13);
+            this.lbl_Query.TabIndex = 18;
+            this.lbl_Query.Text = "Query";
             // 
             // lblTotalDocs
             // 
@@ -416,31 +444,15 @@
             this.txt_Saving.Size = new System.Drawing.Size(245, 20);
             this.txt_Saving.TabIndex = 1;
             // 
-            // lbl_Query
+            // ckb_Analyzer
             // 
-            this.lbl_Query.AutoSize = true;
-            this.lbl_Query.Location = new System.Drawing.Point(3, 83);
-            this.lbl_Query.Name = "lbl_Query";
-            this.lbl_Query.Size = new System.Drawing.Size(35, 13);
-            this.lbl_Query.TabIndex = 18;
-            this.lbl_Query.Text = "Query";
-            // 
-            // lbl_QueryText
-            // 
-            this.lbl_QueryText.AutoSize = true;
-            this.lbl_QueryText.Location = new System.Drawing.Point(102, 83);
-            this.lbl_QueryText.Name = "lbl_QueryText";
-            this.lbl_QueryText.Size = new System.Drawing.Size(0, 13);
-            this.lbl_QueryText.TabIndex = 19;
-            // 
-            // dv_result
-            // 
-            this.dv_result.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dv_result.Location = new System.Drawing.Point(11, 127);
-            this.dv_result.Name = "dv_result";
-            this.dv_result.Size = new System.Drawing.Size(670, 239);
-            this.dv_result.TabIndex = 20;
-            this.dv_result.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dv_result_CellClick);
+            this.ckb_Analyzer.AutoSize = true;
+            this.ckb_Analyzer.Location = new System.Drawing.Point(371, 47);
+            this.ckb_Analyzer.Name = "ckb_Analyzer";
+            this.ckb_Analyzer.Size = new System.Drawing.Size(100, 17);
+            this.ckb_Analyzer.TabIndex = 21;
+            this.ckb_Analyzer.Text = "Simple Analyzer";
+            this.ckb_Analyzer.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -456,9 +468,9 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dv_result)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dv_result)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -500,6 +512,7 @@
         private System.Windows.Forms.Label lbl_QueryText;
         private System.Windows.Forms.Label lbl_Query;
         private System.Windows.Forms.DataGridView dv_result;
+        private System.Windows.Forms.CheckBox ckb_Analyzer;
     }
 }
 
