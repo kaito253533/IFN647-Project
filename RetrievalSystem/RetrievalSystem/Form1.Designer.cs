@@ -449,9 +449,9 @@
             this.ckb_Analyzer.AutoSize = true;
             this.ckb_Analyzer.Location = new System.Drawing.Point(371, 47);
             this.ckb_Analyzer.Name = "ckb_Analyzer";
-            this.ckb_Analyzer.Size = new System.Drawing.Size(100, 17);
+            this.ckb_Analyzer.Size = new System.Drawing.Size(48, 17);
             this.ckb_Analyzer.TabIndex = 21;
-            this.ckb_Analyzer.Text = "Simple Analyzer";
+            this.ckb_Analyzer.Text = "As is";
             this.ckb_Analyzer.UseVisualStyleBackColor = true;
             // 
             // Form1
