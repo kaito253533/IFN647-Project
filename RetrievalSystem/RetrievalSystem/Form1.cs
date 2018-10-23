@@ -171,6 +171,7 @@ namespace RetrievalSystem
             else {
                 analyzer = generator.analyzer;
             }
+            
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             Searcher searcher = new Searcher(txt_IndexPath.Text, analyzer, generator.writer);

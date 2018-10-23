@@ -20,6 +20,7 @@ namespace RetrievalSystem
         Lucene.Net.QueryParsers.QueryParser parser;
         Similarity NewSimilarity;
         public Query query { get; set; }
+        
 
         const Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
         const string TEXT_FN = "World";
@@ -65,23 +66,7 @@ namespace RetrievalSystem
         public Lucene.Net.Search.TopDocs SearchIndex(string text)
         {
             text.ToLower();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            
             query = parser.Parse(text);
             Lucene.Net.Search.TopDocs doc = searcher.Search(query, 1000);
             

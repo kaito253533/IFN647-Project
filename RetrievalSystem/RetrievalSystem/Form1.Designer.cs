@@ -65,6 +65,7 @@
             this.lbl_ExportPath = new System.Windows.Forms.Label();
             this.txt_Saving = new System.Windows.Forms.TextBox();
             this.ckb_Analyzer = new System.Windows.Forms.CheckBox();
+            this.ckb_Boost = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dv_result)).BeginInit();
@@ -127,6 +128,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Menu;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.ckb_Boost);
             this.panel1.Controls.Add(this.lbl_IndexingTime);
             this.panel1.Controls.Add(this.btn_GenerateIndex);
             this.panel1.Controls.Add(this.lbl_IndexingTimeName);
@@ -449,10 +451,20 @@
             this.ckb_Analyzer.AutoSize = true;
             this.ckb_Analyzer.Location = new System.Drawing.Point(371, 47);
             this.ckb_Analyzer.Name = "ckb_Analyzer";
-            this.ckb_Analyzer.Size = new System.Drawing.Size(48, 17);
+            this.ckb_Analyzer.Size = new System.Drawing.Size(47, 17);
             this.ckb_Analyzer.TabIndex = 21;
-            this.ckb_Analyzer.Text = "As is";
+            this.ckb_Analyzer.Text = "as is";
             this.ckb_Analyzer.UseVisualStyleBackColor = true;
+            // 
+            // ckb_Boost
+            // 
+            this.ckb_Boost.AutoSize = true;
+            this.ckb_Boost.Location = new System.Drawing.Point(87, 73);
+            this.ckb_Boost.Name = "ckb_Boost";
+            this.ckb_Boost.Size = new System.Drawing.Size(53, 17);
+            this.ckb_Boost.TabIndex = 22;
+            this.ckb_Boost.Text = "Boost";
+            this.ckb_Boost.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -513,6 +525,7 @@
         private System.Windows.Forms.Label lbl_Query;
         private System.Windows.Forms.DataGridView dv_result;
         private System.Windows.Forms.CheckBox ckb_Analyzer;
+        private System.Windows.Forms.CheckBox ckb_Boost;
     }
 }
 

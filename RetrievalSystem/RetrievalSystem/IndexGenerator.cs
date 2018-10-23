@@ -26,20 +26,21 @@ namespace RetrievalSystem
         public Lucene.Net.Index.IndexWriter writer { get; set; }
         public List<Collection> collectionList{ get; set; }
         public Boolean IsIndexing { get; set; }
+        public Boolean IsBoost { get; set; }
 
         public static Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
    
 
 
         // Constructer
-        public IndexGenerator()
+        public IndexGenerator(Boolean IsBoost = false)
         {
             indexDirectory = null;
 
             //modified
             //analyzer = new Lucene.Net.Analysis.Standard.StandardAnalyzer(VERSION);
             //modified
-
+            this.IsBoost = IsBoost;
             analyzer = new Lucene.Net.Analysis.Snowball.SnowballAnalyzer(Lucene.Net.Util.Version.LUCENE_30, "English");
             writer = null;
             collectionList = null;
@@ -100,8 +101,18 @@ namespace RetrievalSystem
                 Lucene.Net.Documents.Field field_DocID = new Lucene.Net.Documents.Field("DocID", c.DocID, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS);
                 doc.Add(field_DocID);
                 Lucene.Net.Documents.Field field_Title = new Lucene.Net.Documents.Field("Title", c.Title, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS);
+                // If user tick the boost check box
+                if (IsBoost == true)
+                {
+                    field_Title.Boost = 2;
+                }
                 doc.Add(field_Title);
-                doc.Add(new Lucene.Net.Documents.Field("Author", c.Author, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS));
+                Lucene.Net.Documents.Field field_Author = new Lucene.Net.Documents.Field("Author", c.Author, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS);
+                if (IsBoost == true)
+                {
+                    field_Author.Boost = 2;
+                }
+                doc.Add(field_Author);
                 doc.Add(new Lucene.Net.Documents.Field("Bibliographic", c.Bibliographic, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS));
                 doc.Add(new Lucene.Net.Documents.Field("Words", c.Words, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS));
                 writer.AddDocument(doc);
