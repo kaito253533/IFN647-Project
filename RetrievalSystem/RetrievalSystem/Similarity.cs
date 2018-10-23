@@ -1,54 +1,27 @@
-﻿/// N9913661 - WanLun, LU
-/// N9913351 - Minwoo, Kang
-/// Rakesh Maharjan
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Lucene.Net.Search;
 using FieldInvertState = Lucene.Net.Index.FieldInvertState;
 
 namespace RetrievalSystem
 {
-    public class TFSimilarity : DefaultSimilarity 
+    public class NewSimilarity : DefaultSimilarity
     {
+        //Math Log is added to the default TF weighitng
+        public override float Tf(float freq)
+        {
+            return (float)(freq);
+            //return (float)(Math.Log(freq) + 1);
+        }
 
         public override float Idf(int docFreq, int numDocs)
         {
-                return (float)(System.Math.Log(numDocs / (double)(docFreq + 1)) + 1.0);
-                //return (float)System.Math.Sqrt(freq);
+            return (float)(Math.Log(numDocs / (double) (docFreq + 1)) + 1.0);
         }
 
-        
+
     }
 }
-
-
-
-//public override float Tf(float freq)
-//{
-//    //return (float)System.Math.Sqrt(freq);
-//    return 1;
-//}
-
-
-
-//java
-//    public class PayloadSimilarity extends ClassicSimilarity
-//{
-
-//    public float scorePayload(int doc, int start, int end, BytesRef payload)
-//{
-//    if (payload != null)
-//    {
-//        return PayloadHelper.decodeFloat(payload.bytes, payload.offset);
-//    }
-//    else
-//    {
-//        return 1;
-//    }
-//}
-
-//@Override
-//    public String toString()
-//{
-//    return "PayloadSimilarity";
-//}
-//}

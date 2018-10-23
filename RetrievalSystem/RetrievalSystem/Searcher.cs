@@ -1,7 +1,4 @@
-﻿/// N9913661 - WanLun, LU
-/// N9913351 - Minwoo, Kang
-/// Rakesh Maharjan
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +8,7 @@ using Lucene.Net.Documents;
 using Lucene.Net.Index;
 using Lucene.Net.Search;
 using Lucene.Net.Store;
-
+using Lucene.Net.Analysis.Snowball;
 namespace RetrievalSystem
 {
     class Searcher
@@ -21,9 +18,8 @@ namespace RetrievalSystem
         Lucene.Net.Index.IndexWriter writer;
         Lucene.Net.Search.IndexSearcher searcher;
         Lucene.Net.QueryParsers.QueryParser parser;
+        Similarity NewSimilarity;
         public Query query { get; set; }
-
-        Similarity TFSimilarity;
 
         const Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
         const string TEXT_FN = "World";
@@ -33,13 +29,14 @@ namespace RetrievalSystem
             this.indexDirectory = Lucene.Net.Store.FSDirectory.Open(indexPath);
             this.analyzer = analyzer;
             this.writer = writer;
-            TFSimilarity = new TFSimilarity();
+            NewSimilarity = new NewSimilarity();
         }
 
         public void CreateSearcher()
         {
             searcher = new Lucene.Net.Search.IndexSearcher(this.indexDirectory);
-            searcher.Similarity = TFSimilarity;
+            //change similarity
+            searcher.Similarity = NewSimilarity;
         }
 
         public void CreateParser(String type, String field)
@@ -55,6 +52,7 @@ namespace RetrievalSystem
                 case "Muti-Term":
                     string[] fields = new[] { "DocID", "Title", "Author", "Bibliographic", "Words" };
                     parser = new Lucene.Net.QueryParsers.MultiFieldQueryParser(VERSION, fields, analyzer);
+                    
                     break;
                 /*case "Muti - Phrase":
                     parser = new Lucene.Net.QueryParsers.mu(VERSION, fields, analyzer);
@@ -67,9 +65,26 @@ namespace RetrievalSystem
         public Lucene.Net.Search.TopDocs SearchIndex(string text)
         {
             text.ToLower();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             query = parser.Parse(text);
             Lucene.Net.Search.TopDocs doc = searcher.Search(query, 1000);
-
+            
             return doc;
         }
 

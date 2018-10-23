@@ -1,7 +1,4 @@
-﻿/// N9913661 - WanLun, LU
-/// N9913351 - Minwoo, Kang
-/// Rakesh Maharjan
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,31 +8,45 @@ using Lucene.Net.Analysis;
 using Lucene.Net.Documents;
 using Lucene.Net.Index;
 using Lucene.Net.Store;
+using Lucene.Net.Analysis.Snowball;
+//
+
+
+
+//
 
 namespace RetrievalSystem
 {
     class IndexGenerator
     {
+        
         Lucene.Net.Store.Directory indexDirectory;
+        NewSimilarity NewSimilarity;
         public Lucene.Net.Analysis.Analyzer analyzer { get; set; }
         public Lucene.Net.Index.IndexWriter writer { get; set; }
         public List<Collection> collectionList{ get; set; }
         public Boolean IsIndexing { get; set; }
 
         public static Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
+   
 
-        //change similarity
-        TFSimilarity TFSimilarity;
+
         // Constructer
         public IndexGenerator()
         {
             indexDirectory = null;
-            analyzer = new Lucene.Net.Analysis.Standard.StandardAnalyzer(VERSION);
+
+            //modified
+            //analyzer = new Lucene.Net.Analysis.Standard.StandardAnalyzer(VERSION);
+            //modified
+
+            analyzer = new Lucene.Net.Analysis.Snowball.SnowballAnalyzer(Lucene.Net.Util.Version.LUCENE_30, "English");
             writer = null;
             collectionList = null;
-            //change similarity
-            TFSimilarity = new TFSimilarity();
+            NewSimilarity = new NewSimilarity();
         }
+
+        
 
         public Boolean IsDirectoryEmpty(string indexPath)
         {
@@ -75,8 +86,8 @@ namespace RetrievalSystem
 
             // TODO: Enter code to create the Lucene Writer
             writer = new Lucene.Net.Index.IndexWriter(indexDirectory, analyzer, true, mfl);
-            //change similarity
-            writer.SetSimilarity(TFSimilarity);
+            //change similairty
+            writer.SetSimilarity(NewSimilarity);
         }
 
         // Indexing...
@@ -94,6 +105,7 @@ namespace RetrievalSystem
                 doc.Add(new Lucene.Net.Documents.Field("Bibliographic", c.Bibliographic, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS));
                 doc.Add(new Lucene.Net.Documents.Field("Words", c.Words, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS));
                 writer.AddDocument(doc);
+                NewSimilarity = new NewSimilarity();
             }
         }
 
@@ -142,6 +154,7 @@ namespace RetrievalSystem
                 collections.Add(collection);
             }
             collectionList = collections;
+            NewSimilarity = new NewSimilarity();
         }
         // Main Process
         public void StartIndex(string indexPath, string collectionPath)
