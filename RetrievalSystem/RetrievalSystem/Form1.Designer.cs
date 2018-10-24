@@ -40,6 +40,7 @@
             this.lbl_IndexingTimeName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ckb_Analzer = new System.Windows.Forms.CheckBox();
             this.dv_result = new System.Windows.Forms.DataGridView();
             this.lbl_QueryText = new System.Windows.Forms.Label();
             this.lbl_Query = new System.Windows.Forms.Label();
@@ -55,7 +56,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblSearch = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.txt_InformationNeeds = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txt_FileName = new System.Windows.Forms.TextBox();
             this.lbl_FileName = new System.Windows.Forms.Label();
@@ -64,7 +64,7 @@
             this.btn_SaveBrowse = new System.Windows.Forms.Button();
             this.lbl_ExportPath = new System.Windows.Forms.Label();
             this.txt_Saving = new System.Windows.Forms.TextBox();
-            this.ckb_Analzer = new System.Windows.Forms.CheckBox();
+            this.txt_InformationNeeds = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dv_result)).BeginInit();
@@ -185,6 +185,7 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Menu;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.txt_InformationNeeds);
             this.panel2.Controls.Add(this.ckb_Analzer);
             this.panel2.Controls.Add(this.dv_result);
             this.panel2.Controls.Add(this.lbl_QueryText);
@@ -201,12 +202,21 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.lblSearch);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.txt_InformationNeeds);
             this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel2.Location = new System.Drawing.Point(12, 210);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(696, 413);
             this.panel2.TabIndex = 7;
+            // 
+            // ckb_Analzer
+            // 
+            this.ckb_Analzer.AutoSize = true;
+            this.ckb_Analzer.Location = new System.Drawing.Point(374, 44);
+            this.ckb_Analzer.Name = "ckb_Analzer";
+            this.ckb_Analzer.Size = new System.Drawing.Size(119, 17);
+            this.ckb_Analzer.TabIndex = 21;
+            this.ckb_Analzer.Text = "Use SimpleAnalyzer";
+            this.ckb_Analzer.UseVisualStyleBackColor = true;
             // 
             // dv_result
             // 
@@ -358,13 +368,6 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Information Needs";
             // 
-            // txt_InformationNeeds
-            // 
-            this.txt_InformationNeeds.Location = new System.Drawing.Point(102, 18);
-            this.txt_InformationNeeds.Name = "txt_InformationNeeds";
-            this.txt_InformationNeeds.Size = new System.Drawing.Size(507, 20);
-            this.txt_InformationNeeds.TabIndex = 1;
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Menu;
@@ -444,15 +447,14 @@
             this.txt_Saving.Size = new System.Drawing.Size(245, 20);
             this.txt_Saving.TabIndex = 1;
             // 
-            // ckb_Analzer
+            // txt_InformationNeeds
             // 
-            this.ckb_Analzer.AutoSize = true;
-            this.ckb_Analzer.Location = new System.Drawing.Point(374, 44);
-            this.ckb_Analzer.Name = "ckb_Analzer";
-            this.ckb_Analzer.Size = new System.Drawing.Size(119, 17);
-            this.ckb_Analzer.TabIndex = 21;
-            this.ckb_Analzer.Text = "Use SimpleAnalyzer";
-            this.ckb_Analzer.UseVisualStyleBackColor = true;
+            this.txt_InformationNeeds.FormattingEnabled = true;
+            this.txt_InformationNeeds.Location = new System.Drawing.Point(102, 13);
+            this.txt_InformationNeeds.Name = "txt_InformationNeeds";
+            this.txt_InformationNeeds.Size = new System.Drawing.Size(438, 21);
+            this.txt_InformationNeeds.TabIndex = 22;
+            this.txt_InformationNeeds.TextChanged += new System.EventHandler(this.txt_InformationNeeds_TextChanged);
             // 
             // Form1
             // 
@@ -491,7 +493,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button lblSearch;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txt_InformationNeeds;
         private System.Windows.Forms.Label lbl_Result;
         private System.Windows.Forms.Label lbl_SearchingTime;
         private System.Windows.Forms.Label lbl_ProcessTimeForSearch;
@@ -513,6 +514,7 @@
         private System.Windows.Forms.Label lbl_Query;
         private System.Windows.Forms.DataGridView dv_result;
         private System.Windows.Forms.CheckBox ckb_Analzer;
+        private System.Windows.Forms.ComboBox txt_InformationNeeds;
     }
 }
 

@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RetrievalSystem
@@ -15,11 +11,43 @@ namespace RetrievalSystem
     public partial class Form1 : Form
     {
         IndexGenerator generator = new IndexGenerator();
+        List<string> col = new List<string>();
         public Form1()
         {
             InitializeComponent();
             ddl_Type.SelectedIndex = 0;
             ddl_Fields.SelectedIndex = 0;
+            ReadInformationNeed();
+        }
+
+        private void ReadInformationNeed()
+        {
+            string informationNeedPath = @"./data/cran_information_needs.txt";
+
+            // Read the files from the collection directory
+            FileInfo di = new FileInfo(informationNeedPath);
+
+            string text = System.IO.File.ReadAllText(di.FullName);
+
+            // Get Words
+            string[] stringSeparators = new string[] { ".I", "\n.I" };
+            string[] result = text.Split(stringSeparators, StringSplitOptions.None);
+            if (result.Count() >= 2)
+            {
+                result = result.Skip(1).ToArray();
+            }
+
+            
+            foreach (string s in result)
+            {
+                string Temptext = s.Split(new string[] { ".D\n", "\n.D\n" }, StringSplitOptions.None)[1];
+                col.Add(Temptext);
+            }
+
+            txt_InformationNeeds.DataSource = col;
+            txt_InformationNeeds.AutoCompleteSource = AutoCompleteSource.ListItems;
+            txt_InformationNeeds.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txt_InformationNeeds.Text = "";
         }
 
         // Paging...
@@ -312,5 +340,9 @@ namespace RetrievalSystem
         }
         #endregion
 
+        private void txt_InformationNeeds_TextChanged(object sender, EventArgs e)
+        {
+          
+        }
     }
 }
