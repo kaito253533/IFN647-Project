@@ -40,6 +40,7 @@
             this.lbl_IndexingTimeName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txt_InformationNeeds = new System.Windows.Forms.ComboBox();
             this.ckb_Analzer = new System.Windows.Forms.CheckBox();
             this.dv_result = new System.Windows.Forms.DataGridView();
             this.lbl_QueryText = new System.Windows.Forms.Label();
@@ -64,7 +65,6 @@
             this.btn_SaveBrowse = new System.Windows.Forms.Button();
             this.lbl_ExportPath = new System.Windows.Forms.Label();
             this.txt_Saving = new System.Windows.Forms.TextBox();
-            this.txt_InformationNeeds = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dv_result)).BeginInit();
@@ -208,14 +208,23 @@
             this.panel2.Size = new System.Drawing.Size(696, 413);
             this.panel2.TabIndex = 7;
             // 
+            // txt_InformationNeeds
+            // 
+            this.txt_InformationNeeds.FormattingEnabled = true;
+            this.txt_InformationNeeds.Location = new System.Drawing.Point(102, 13);
+            this.txt_InformationNeeds.Name = "txt_InformationNeeds";
+            this.txt_InformationNeeds.Size = new System.Drawing.Size(438, 21);
+            this.txt_InformationNeeds.TabIndex = 22;
+            this.txt_InformationNeeds.TextChanged += new System.EventHandler(this.txt_InformationNeeds_TextChanged);
+            // 
             // ckb_Analzer
             // 
             this.ckb_Analzer.AutoSize = true;
             this.ckb_Analzer.Location = new System.Drawing.Point(374, 44);
             this.ckb_Analzer.Name = "ckb_Analzer";
-            this.ckb_Analzer.Size = new System.Drawing.Size(119, 17);
+            this.ckb_Analzer.Size = new System.Drawing.Size(47, 17);
             this.ckb_Analzer.TabIndex = 21;
-            this.ckb_Analzer.Text = "Use SimpleAnalyzer";
+            this.ckb_Analzer.Text = "as is";
             this.ckb_Analzer.UseVisualStyleBackColor = true;
             // 
             // dv_result
@@ -397,9 +406,9 @@
             this.lbl_FileName.AutoSize = true;
             this.lbl_FileName.Location = new System.Drawing.Point(3, 52);
             this.lbl_FileName.Name = "lbl_FileName";
-            this.lbl_FileName.Size = new System.Drawing.Size(68, 13);
+            this.lbl_FileName.Size = new System.Drawing.Size(62, 13);
             this.lbl_FileName.TabIndex = 9;
-            this.lbl_FileName.Text = "Saving Path:";
+            this.lbl_FileName.Text = "Saving File:";
             // 
             // lbl_Warning
             // 
@@ -446,15 +455,6 @@
             this.txt_Saving.Name = "txt_Saving";
             this.txt_Saving.Size = new System.Drawing.Size(245, 20);
             this.txt_Saving.TabIndex = 1;
-            // 
-            // txt_InformationNeeds
-            // 
-            this.txt_InformationNeeds.FormattingEnabled = true;
-            this.txt_InformationNeeds.Location = new System.Drawing.Point(102, 13);
-            this.txt_InformationNeeds.Name = "txt_InformationNeeds";
-            this.txt_InformationNeeds.Size = new System.Drawing.Size(438, 21);
-            this.txt_InformationNeeds.TabIndex = 22;
-            this.txt_InformationNeeds.TextChanged += new System.EventHandler(this.txt_InformationNeeds_TextChanged);
             // 
             // Form1
             // 
