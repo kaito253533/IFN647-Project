@@ -65,7 +65,8 @@
             this.lbl_ExportPath = new System.Windows.Forms.Label();
             this.txt_Saving = new System.Windows.Forms.TextBox();
             this.ckb_Analyzer = new System.Windows.Forms.CheckBox();
-            this.ckb_Boost = new System.Windows.Forms.CheckBox();
+            this.ckb_Boost_Title = new System.Windows.Forms.CheckBox();
+            this.ckb_Boost_Author = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dv_result)).BeginInit();
@@ -128,7 +129,8 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Menu;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.ckb_Boost);
+            this.panel1.Controls.Add(this.ckb_Boost_Author);
+            this.panel1.Controls.Add(this.ckb_Boost_Title);
             this.panel1.Controls.Add(this.lbl_IndexingTime);
             this.panel1.Controls.Add(this.btn_GenerateIndex);
             this.panel1.Controls.Add(this.lbl_IndexingTimeName);
@@ -456,15 +458,25 @@
             this.ckb_Analyzer.Text = "as is";
             this.ckb_Analyzer.UseVisualStyleBackColor = true;
             // 
-            // ckb_Boost
+            // ckb_Boost_Title
             // 
-            this.ckb_Boost.AutoSize = true;
-            this.ckb_Boost.Location = new System.Drawing.Point(87, 73);
-            this.ckb_Boost.Name = "ckb_Boost";
-            this.ckb_Boost.Size = new System.Drawing.Size(53, 17);
-            this.ckb_Boost.TabIndex = 22;
-            this.ckb_Boost.Text = "Boost";
-            this.ckb_Boost.UseVisualStyleBackColor = true;
+            this.ckb_Boost_Title.AutoSize = true;
+            this.ckb_Boost_Title.Location = new System.Drawing.Point(87, 73);
+            this.ckb_Boost_Title.Name = "ckb_Boost_Title";
+            this.ckb_Boost_Title.Size = new System.Drawing.Size(76, 17);
+            this.ckb_Boost_Title.TabIndex = 22;
+            this.ckb_Boost_Title.Text = "Boost Title";
+            this.ckb_Boost_Title.UseVisualStyleBackColor = true;
+            // 
+            // ckb_Boost_Author
+            // 
+            this.ckb_Boost_Author.AutoSize = true;
+            this.ckb_Boost_Author.Location = new System.Drawing.Point(185, 73);
+            this.ckb_Boost_Author.Name = "ckb_Boost_Author";
+            this.ckb_Boost_Author.Size = new System.Drawing.Size(87, 17);
+            this.ckb_Boost_Author.TabIndex = 23;
+            this.ckb_Boost_Author.Text = "Boost Author";
+            this.ckb_Boost_Author.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -525,7 +537,8 @@
         private System.Windows.Forms.Label lbl_Query;
         private System.Windows.Forms.DataGridView dv_result;
         private System.Windows.Forms.CheckBox ckb_Analyzer;
-        private System.Windows.Forms.CheckBox ckb_Boost;
+        private System.Windows.Forms.CheckBox ckb_Boost_Title;
+        private System.Windows.Forms.CheckBox ckb_Boost_Author;
     }
 }
 

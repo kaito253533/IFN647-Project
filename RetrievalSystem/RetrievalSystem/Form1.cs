@@ -17,7 +17,7 @@ namespace RetrievalSystem
 {
     public partial class Form1 : Form
     {
-        IndexGenerator generator = new IndexGenerator();
+        IndexGenerator generator;
         public Form1()
         {
             InitializeComponent();
@@ -74,6 +74,7 @@ namespace RetrievalSystem
 
 
             // Do the index here.
+            generator = new IndexGenerator(ckb_Boost_Title.Checked, ckb_Boost_Author.Checked);
             if (!generator.IsDirectoryEmpty(txt_IndexPath.Text))
             {
                 if (MessageBox.Show("The directory is not empty, do you want to delete all the files inside? (Yes-Delete All, No-Select Again)",
@@ -220,16 +221,6 @@ namespace RetrievalSystem
 
         private void GenerateListView()
         {
-            /*lv_Result.Clear();
-            lv_Result.View = View.Details;
-            lv_Result.Columns.Add("DocID", -2, HorizontalAlignment.Left);
-            lv_Result.Columns.Add("Title", -2, HorizontalAlignment.Left);
-            lv_Result.Columns.Add("Author", -2, HorizontalAlignment.Left);
-            lv_Result.Columns.Add("Bibliographic", -2, HorizontalAlignment.Left);
-            lv_Result.Columns.Add("Abtract", -2, HorizontalAlignment.Left);
-            lv_Result.Columns.Add("", -2, HorizontalAlignment.Left);
-            */
-
             dv_result.Columns.Clear();
             //dv_result.View = View.Details;
             dv_result.Columns.Add("DocID", "DocID");
