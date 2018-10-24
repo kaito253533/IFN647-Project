@@ -102,6 +102,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\cran_information_needs.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="dll\Lucene.Net.Contrib.Snowball.dll" />
     <Content Include="dll\Lucene.Net.Contrib.Snowball.pdb" />
   </ItemGroup>

@@ -35,11 +35,14 @@
             this.txt_IndexPath = new System.Windows.Forms.TextBox();
             this.btn_IndexPath = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ckb_Boost_Author = new System.Windows.Forms.CheckBox();
+            this.ckb_Boost_Title = new System.Windows.Forms.CheckBox();
             this.lbl_IndexingTime = new System.Windows.Forms.Label();
             this.btn_GenerateIndex = new System.Windows.Forms.Button();
             this.lbl_IndexingTimeName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ckb_Analyzer = new System.Windows.Forms.CheckBox();
             this.dv_result = new System.Windows.Forms.DataGridView();
             this.lbl_QueryText = new System.Windows.Forms.Label();
             this.lbl_Query = new System.Windows.Forms.Label();
@@ -55,7 +58,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblSearch = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.txt_InformationNeeds = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txt_FileName = new System.Windows.Forms.TextBox();
             this.lbl_FileName = new System.Windows.Forms.Label();
@@ -64,9 +66,7 @@
             this.btn_SaveBrowse = new System.Windows.Forms.Button();
             this.lbl_ExportPath = new System.Windows.Forms.Label();
             this.txt_Saving = new System.Windows.Forms.TextBox();
-            this.ckb_Analyzer = new System.Windows.Forms.CheckBox();
-            this.ckb_Boost_Title = new System.Windows.Forms.CheckBox();
-            this.ckb_Boost_Author = new System.Windows.Forms.CheckBox();
+            this.txt_InformationNeeds = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dv_result)).BeginInit();
@@ -147,6 +147,26 @@
             this.panel1.Size = new System.Drawing.Size(696, 96);
             this.panel1.TabIndex = 6;
             // 
+            // ckb_Boost_Author
+            // 
+            this.ckb_Boost_Author.AutoSize = true;
+            this.ckb_Boost_Author.Location = new System.Drawing.Point(185, 73);
+            this.ckb_Boost_Author.Name = "ckb_Boost_Author";
+            this.ckb_Boost_Author.Size = new System.Drawing.Size(87, 17);
+            this.ckb_Boost_Author.TabIndex = 23;
+            this.ckb_Boost_Author.Text = "Boost Author";
+            this.ckb_Boost_Author.UseVisualStyleBackColor = true;
+            // 
+            // ckb_Boost_Title
+            // 
+            this.ckb_Boost_Title.AutoSize = true;
+            this.ckb_Boost_Title.Location = new System.Drawing.Point(87, 73);
+            this.ckb_Boost_Title.Name = "ckb_Boost_Title";
+            this.ckb_Boost_Title.Size = new System.Drawing.Size(76, 17);
+            this.ckb_Boost_Title.TabIndex = 22;
+            this.ckb_Boost_Title.Text = "Boost Title";
+            this.ckb_Boost_Title.UseVisualStyleBackColor = true;
+            // 
             // lbl_IndexingTime
             // 
             this.lbl_IndexingTime.AutoSize = true;
@@ -189,6 +209,7 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Menu;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.txt_InformationNeeds);
             this.panel2.Controls.Add(this.ckb_Analyzer);
             this.panel2.Controls.Add(this.dv_result);
             this.panel2.Controls.Add(this.lbl_QueryText);
@@ -205,12 +226,21 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.lblSearch);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.txt_InformationNeeds);
             this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel2.Location = new System.Drawing.Point(12, 210);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(696, 413);
             this.panel2.TabIndex = 7;
+            // 
+            // ckb_Analyzer
+            // 
+            this.ckb_Analyzer.AutoSize = true;
+            this.ckb_Analyzer.Location = new System.Drawing.Point(371, 47);
+            this.ckb_Analyzer.Name = "ckb_Analyzer";
+            this.ckb_Analyzer.Size = new System.Drawing.Size(47, 17);
+            this.ckb_Analyzer.TabIndex = 21;
+            this.ckb_Analyzer.Text = "as is";
+            this.ckb_Analyzer.UseVisualStyleBackColor = true;
             // 
             // dv_result
             // 
@@ -362,13 +392,6 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Information Needs";
             // 
-            // txt_InformationNeeds
-            // 
-            this.txt_InformationNeeds.Location = new System.Drawing.Point(102, 18);
-            this.txt_InformationNeeds.Name = "txt_InformationNeeds";
-            this.txt_InformationNeeds.Size = new System.Drawing.Size(507, 20);
-            this.txt_InformationNeeds.TabIndex = 1;
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Menu;
@@ -448,35 +471,13 @@
             this.txt_Saving.Size = new System.Drawing.Size(245, 20);
             this.txt_Saving.TabIndex = 1;
             // 
-            // ckb_Analyzer
+            // txt_InformationNeeds
             // 
-            this.ckb_Analyzer.AutoSize = true;
-            this.ckb_Analyzer.Location = new System.Drawing.Point(371, 47);
-            this.ckb_Analyzer.Name = "ckb_Analyzer";
-            this.ckb_Analyzer.Size = new System.Drawing.Size(47, 17);
-            this.ckb_Analyzer.TabIndex = 21;
-            this.ckb_Analyzer.Text = "as is";
-            this.ckb_Analyzer.UseVisualStyleBackColor = true;
-            // 
-            // ckb_Boost_Title
-            // 
-            this.ckb_Boost_Title.AutoSize = true;
-            this.ckb_Boost_Title.Location = new System.Drawing.Point(87, 73);
-            this.ckb_Boost_Title.Name = "ckb_Boost_Title";
-            this.ckb_Boost_Title.Size = new System.Drawing.Size(76, 17);
-            this.ckb_Boost_Title.TabIndex = 22;
-            this.ckb_Boost_Title.Text = "Boost Title";
-            this.ckb_Boost_Title.UseVisualStyleBackColor = true;
-            // 
-            // ckb_Boost_Author
-            // 
-            this.ckb_Boost_Author.AutoSize = true;
-            this.ckb_Boost_Author.Location = new System.Drawing.Point(185, 73);
-            this.ckb_Boost_Author.Name = "ckb_Boost_Author";
-            this.ckb_Boost_Author.Size = new System.Drawing.Size(87, 17);
-            this.ckb_Boost_Author.TabIndex = 23;
-            this.ckb_Boost_Author.Text = "Boost Author";
-            this.ckb_Boost_Author.UseVisualStyleBackColor = true;
+            this.txt_InformationNeeds.FormattingEnabled = true;
+            this.txt_InformationNeeds.Location = new System.Drawing.Point(105, 13);
+            this.txt_InformationNeeds.Name = "txt_InformationNeeds";
+            this.txt_InformationNeeds.Size = new System.Drawing.Size(389, 21);
+            this.txt_InformationNeeds.TabIndex = 22;
             // 
             // Form1
             // 
@@ -515,7 +516,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button lblSearch;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txt_InformationNeeds;
         private System.Windows.Forms.Label lbl_Result;
         private System.Windows.Forms.Label lbl_SearchingTime;
         private System.Windows.Forms.Label lbl_ProcessTimeForSearch;
@@ -539,6 +539,7 @@
         private System.Windows.Forms.CheckBox ckb_Analyzer;
         private System.Windows.Forms.CheckBox ckb_Boost_Title;
         private System.Windows.Forms.CheckBox ckb_Boost_Author;
+        private System.Windows.Forms.ComboBox txt_InformationNeeds;
     }
 }
 
