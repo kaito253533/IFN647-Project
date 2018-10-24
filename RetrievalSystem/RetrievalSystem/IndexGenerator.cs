@@ -42,7 +42,7 @@ namespace RetrievalSystem
             //modified
             this.IsBoostTitle = IsBoostTitle;
             this.IsBoostAuthor = IsBoostAuthor;
-            analyzer = new Lucene.Net.Analysis.Snowball.SnowballAnalyzer(Lucene.Net.Util.Version.LUCENE_30, "English");
+            analyzer = new Lucene.Net.Analysis.Snowball.SnowballAnalyzer(Lucene.Net.Util.Version.LUCENE_30, "English",StopAnalyzer.ENGLISH_STOP_WORDS_SET);
             writer = null;
             collectionList = null;
             NewSimilarity = new NewSimilarity();
