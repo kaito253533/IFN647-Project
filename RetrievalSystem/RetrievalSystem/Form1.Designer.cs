@@ -67,6 +67,7 @@
             this.lbl_ExportPath = new System.Windows.Forms.Label();
             this.txt_Saving = new System.Windows.Forms.TextBox();
             this.txt_InformationNeeds = new System.Windows.Forms.ComboBox();
+            this.ckb_WordNet = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dv_result)).BeginInit();
@@ -209,6 +210,7 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Menu;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.ckb_WordNet);
             this.panel2.Controls.Add(this.txt_InformationNeeds);
             this.panel2.Controls.Add(this.ckb_Analyzer);
             this.panel2.Controls.Add(this.dv_result);
@@ -421,9 +423,9 @@
             this.lbl_FileName.AutoSize = true;
             this.lbl_FileName.Location = new System.Drawing.Point(3, 52);
             this.lbl_FileName.Name = "lbl_FileName";
-            this.lbl_FileName.Size = new System.Drawing.Size(68, 13);
+            this.lbl_FileName.Size = new System.Drawing.Size(62, 13);
             this.lbl_FileName.TabIndex = 9;
-            this.lbl_FileName.Text = "Saving Path:";
+            this.lbl_FileName.Text = "Saving File:";
             // 
             // lbl_Warning
             // 
@@ -478,6 +480,16 @@
             this.txt_InformationNeeds.Name = "txt_InformationNeeds";
             this.txt_InformationNeeds.Size = new System.Drawing.Size(389, 21);
             this.txt_InformationNeeds.TabIndex = 22;
+            // 
+            // ckb_WordNet
+            // 
+            this.ckb_WordNet.AutoSize = true;
+            this.ckb_WordNet.Location = new System.Drawing.Point(424, 47);
+            this.ckb_WordNet.Name = "ckb_WordNet";
+            this.ckb_WordNet.Size = new System.Drawing.Size(69, 17);
+            this.ckb_WordNet.TabIndex = 23;
+            this.ckb_WordNet.Text = "WordNet";
+            this.ckb_WordNet.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -540,6 +552,7 @@
         private System.Windows.Forms.CheckBox ckb_Boost_Title;
         private System.Windows.Forms.CheckBox ckb_Boost_Author;
         private System.Windows.Forms.ComboBox txt_InformationNeeds;
+        private System.Windows.Forms.CheckBox ckb_WordNet;
     }
 }
 

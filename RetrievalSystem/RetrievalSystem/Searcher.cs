@@ -9,6 +9,7 @@ using Lucene.Net.Index;
 using Lucene.Net.Search;
 using Lucene.Net.Store;
 using Lucene.Net.Analysis.Snowball;
+
 namespace RetrievalSystem
 {
     class Searcher
@@ -20,16 +21,17 @@ namespace RetrievalSystem
         Lucene.Net.QueryParsers.QueryParser parser;
         Similarity NewSimilarity;
         public Query query { get; set; }
-        
+        public bool IsWordNet { get; set; }
 
         const Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
         const string TEXT_FN = "World";
 
-        public Searcher(string indexPath, Lucene.Net.Analysis.Analyzer analyzer, Lucene.Net.Index.IndexWriter writer)
+        public Searcher(string indexPath, Lucene.Net.Analysis.Analyzer analyzer, Lucene.Net.Index.IndexWriter writer, Boolean IsWordNet = false)
         {
             this.indexDirectory = Lucene.Net.Store.FSDirectory.Open(indexPath);
             this.analyzer = analyzer;
             this.writer = writer;
+            this.IsWordNet = IsWordNet;
             NewSimilarity = new NewSimilarity();
         }
 
@@ -66,8 +68,15 @@ namespace RetrievalSystem
         public Lucene.Net.Search.TopDocs SearchIndex(string text)
         {
             text.ToLower();
-            
+
+            // If user choose to use Wordnet
+            if (IsWordNet)
+            {
+                List<string> result = WordNet.GetSynonyms(text);
+                text = string.Format("{0} {1}", text, string.Join(" ", result));
+            }
             query = parser.Parse(text);
+            
             Lucene.Net.Search.TopDocs doc = searcher.Search(query, 1000);
             searcher.Dispose();
             return doc;

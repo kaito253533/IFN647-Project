@@ -207,7 +207,7 @@ namespace RetrievalSystem
             
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
-            Searcher searcher = new Searcher(txt_IndexPath.Text, analyzer, generator.writer);
+            Searcher searcher = new Searcher(txt_IndexPath.Text, analyzer, generator.writer, ckb_WordNet.Checked);
             searcher.CreateSearcher();
             searcher.CreateParser(ddl_Type.SelectedItem.ToString(), ddl_Fields.SelectedItem.ToString());
 
