@@ -13,8 +13,8 @@ namespace RetrievalSystem
         //Math Log is added to the default TF weighitng
         public override float Tf(float freq)
         {
-            return (float)(freq);
-            //return (float)(Math.Log(freq) + 1);
+            
+            return (float)(Math.Log(freq) + 1);
         }
 
         public override float Idf(int docFreq, int numDocs)
