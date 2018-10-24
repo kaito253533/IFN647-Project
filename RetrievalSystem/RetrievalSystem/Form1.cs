@@ -140,7 +140,7 @@ namespace RetrievalSystem
                         "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     // User wanna append it, so get the Topic ID from document...
-                    var lastLine = File.ReadLines(filePath).Last();
+                    var lastLine = File.ReadLines(filePath).Count() != 0 ? File.ReadLines(filePath).Last() : "000";
                     if (!String.IsNullOrEmpty(lastLine))
                     {
                         var firstword = lastLine.ToString().Split(' ')[0];
@@ -212,6 +212,7 @@ namespace RetrievalSystem
                 foreach (Collection c in ResultCollectionList)
                 {
                     string TopicIDString = string.Format("{0:000}", TopicID);
+                    file.NewLine = "\n";
                     file.WriteLine(String.Format("{0} {1} {2} {3} {4} {5}", TopicIDString, "Q0", c.DocID, rank.ToString(), c.Score, "9913661_9913351_10032711_RetrievalHero"));
                     rank = rank + 1;
                 }
